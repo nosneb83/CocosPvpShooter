@@ -1,0 +1,17 @@
+<Solution>
+  <PropertyGroup Name="CocosPvpShooter" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Image Name="20200313121701658.png" />
+        <Image Name="20200313140350517.png" />
+        <Image Name="2020031314051621.png" />
+        <Project Name="BattleScene.csd" Type="Scene" />
+        <Image Name="HelloWorld.png" />
+        <Image Name="levelbg.jpg" />
+        <Project Name="MainScene.csd" Type="Scene" />
+        <TTF Name="msjh.ttc" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

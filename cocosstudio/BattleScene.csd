@@ -6,14 +6,14 @@
       <ObjectData Name="Scene" Tag="15" ctype="GameNodeObjectData">
         <Size X="1280.0000" Y="720.0000" />
         <Children>
-          <AbstractNodeData Name="Background" ActionTag="1465809838" Tag="19" IconVisible="False" LeftEage="440" RightEage="440" TopEage="247" BottomEage="247" Scale9OriginX="440" Scale9OriginY="247" Scale9Width="454" Scale9Height="256" ctype="ImageViewObjectData">
-            <Size X="1280.0000" Y="720.0000" />
+          <AbstractNodeData Name="Background" ActionTag="1465809838" Tag="19" IconVisible="False" LeftMargin="-640.0000" RightMargin="-640.0000" TopMargin="-360.0000" BottomMargin="-360.0000" LeftEage="440" RightEage="440" TopEage="247" BottomEage="247" Scale9OriginX="440" Scale9OriginY="247" Scale9Width="454" Scale9Height="256" ctype="ImageViewObjectData">
+            <Size X="2560.0000" Y="1440.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="640.0000" Y="360.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5000" />
-            <PreSize X="1.0000" Y="1.0000" />
+            <PreSize X="2.0000" Y="2.0000" />
             <FileData Type="Normal" Path="levelbg.jpg" Plist="" />
           </AbstractNodeData>
           <AbstractNodeData Name="Ninja" ActionTag="1406422336" Tag="18" IconVisible="False" LeftMargin="46.5000" RightMargin="1206.5000" TopMargin="640.0000" BottomMargin="40.0000" ctype="SpriteObjectData">

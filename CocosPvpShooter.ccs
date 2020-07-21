@@ -3,6 +3,7 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
+        <Image Name="2.png" />
         <Image Name="20200313121701658.png" />
         <Image Name="20200313140350517.png" />
         <Image Name="2020031314051621.png" />

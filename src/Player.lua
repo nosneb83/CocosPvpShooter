@@ -28,7 +28,7 @@ end
 
 -- 角色跳躍
 function Player:jump()
-    self.body:applyImpulse(cc.pMul(cc.p(0, 1), 10000000))
+    self.body:applyImpulse(cc.pMul(cc.p(0, 1), 20000000))
 end
 
 -- 限制某數的範圍

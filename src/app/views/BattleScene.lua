@@ -5,6 +5,7 @@ end)
 require("Player")
 local scheduler = cc.Director:getInstance():getScheduler()
 local rootNode
+local cam
 local ninja, monster, bullet
 local ninjaObj
 
@@ -12,13 +13,18 @@ function BattleScene:ctor()
     rootNode = cc.CSLoader:createNode("BattleScene.csb")
     self:addChild(rootNode)
 
-    ninjaObj = Player:create("Ninja", rootNode:getChildByName("Ninja"), self:getDefaultCamera())
+    -- Tilemap
+    -- local tilemap = ccexp.TMXTiledMap:create("map1.tmx")
+    -- self:addChild(tilemap, 0, 0)
+    cam = self:getDefaultCamera()
+    ninjaObj = Player:create("Ninja", rootNode:getChildByName("Ninja"), cam)
     ninja = ninjaObj.node
 
     monster = rootNode:getChildByName("Monster")
     bullet = rootNode:getChildByName("Bullet")
 
     self:setPhysics()
+    self:setLandCollider()
 
     -- 監聽點擊事件
     local function touchBegan(touch, event)
@@ -89,12 +95,11 @@ function BattleScene:setPhysics()
     self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_ALL) -- cc.PhysicsWorld.DEBUGDRAW_ALL显示包围盒 cc.PhysicsWorld.DEBUGDRAW_NONE不显示包围盒
 
     -- 設定物理世界邊框
-    local edgeBody = cc.PhysicsBody:createEdgeBox(self.visibleSize, cc.PhysicsMaterial(1, 1, 0), 0)
-    local edgeNode = cc.Node:create()
-    rootNode:addChild(edgeNode)
-    edgeNode:setPosition(self.visibleSize.width * 0.5, self.visibleSize.height * 0.5)
-    edgeNode:setPhysicsBody(edgeBody)
-
+    -- local edgeBody = cc.PhysicsBody:createEdgeBox(self.visibleSize, cc.PhysicsMaterial(1, 1, 0), 0)
+    -- local edgeNode = cc.Node:create()
+    -- rootNode:addChild(edgeNode)
+    -- edgeNode:setPosition(self.visibleSize.width * 0.5, self.visibleSize.height * 0.5)
+    -- edgeNode:setPhysicsBody(edgeBody)
     -- 材质类型
     local MATERIAL_DEFAULT = cc.PhysicsMaterial(1, 0, 0) -- 密度、碰撞系数、摩擦力
 
@@ -102,6 +107,16 @@ function BattleScene:setPhysics()
     local monsterRigidBody = cc.PhysicsBody:createBox(monster:getContentSize(), MATERIAL_DEFAULT)
     monster:setPhysicsBody(monsterRigidBody)
     monsterRigidBody:setGravityEnable(false)
+end
+
+-- 添加地板Collider
+function BattleScene:setLandCollider()
+    local land = rootNode:getChildByName("Land")
+    for k, v in ipairs(land:getChildren()) do
+        local body = cc.PhysicsBody:createBox(v:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
+        body:setDynamic(false)
+        v:setPhysicsBody(body)
+    end
 end
 
 -- 子彈移動
@@ -118,7 +133,9 @@ function BattleScene:shoot(touch)
     newBullet:setPosition(ninja:getPosition())
     local pNinja = cc.p(ninja:getPosition())
     local touchP = cc.p(touch:getLocation()["x"], touch:getLocation()["y"])
-    local offset = cc.pMul(cc.pNormalize(cc.pSub(touchP, pNinja)), 1000)
+    -- touch 螢幕座標轉成世界座標
+    local touchWorld = cc.pSub(cc.pAdd(touchP, cc.p(cam:getPosition())), cc.p(640, 360))
+    local offset = cc.pMul(cc.pNormalize(cc.pSub(touchWorld, pNinja)), 1000)
     local move = cc.MoveBy:create(0.5, offset)
     local removeSelf = cc.RemoveSelf:create()
     newBullet:runAction(cc.Sequence:create(move, removeSelf))

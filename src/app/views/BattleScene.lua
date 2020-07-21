@@ -17,7 +17,7 @@ function BattleScene:ctor()
     -- local tilemap = ccexp.TMXTiledMap:create("map1.tmx")
     -- self:addChild(tilemap, 0, 0)
     cam = self:getDefaultCamera()
-    ninjaObj = Player:create("Ninja", rootNode:getChildByName("Ninja"), cam)
+    ninjaObj = Player:create("Ninja", 0, rootNode:getChildByName("Ninja"), cam)
     ninja = ninjaObj.node
 
     monster = rootNode:getChildByName("Monster")
@@ -88,7 +88,7 @@ function BattleScene:setPhysics()
     self:scheduleUpdateWithPriorityLua(update, 0)
 
     -- 設定重力
-    local gravity = cc.p(0, -10000)
+    local gravity = cc.p(0, -100000)
     self:getPhysicsWorld():setGravity(gravity)
 
     -- 物理世界 Debug Mode 開啟

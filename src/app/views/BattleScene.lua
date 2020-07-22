@@ -2,6 +2,8 @@ local BattleScene = class("BattleScene", function()
     return cc.Scene:createWithPhysics()
 end)
 
+local socket = require("LuaTcpSocket"):new():init()
+require("json")
 require("Player")
 local scheduler = cc.Director:getInstance():getScheduler()
 local rootNode
@@ -10,12 +12,33 @@ local ninja, monster, bullet
 local ninjaObj
 
 function BattleScene:ctor()
+    -- socket連線
+    local function onConnectStatus(code, msg)
+        -- print(msg)
+    end
+    local function ReceiveCallback(msg)
+        print(msg)
+        local jsonObj = json.decode(msg)
+        if jsonObj["inputType"] == "walk" then
+            ninjaObj:walk(jsonObj["walkDir"])
+        elseif jsonObj["inputType"] == "jump" then
+            ninjaObj:jump()
+        elseif jsonObj["inputType"] == "shoot" then
+            self:shootP(cc.p(jsonObj["x"], jsonObj["y"]))
+        end
+    end
+    socket:setConnectCallback(onConnectStatus)
+    socket:setReceiveCallback(ReceiveCallback)
+    socket:connect("127.0.0.1", "8888")
+
+    -- 繪製Scene
     rootNode = cc.CSLoader:createNode("BattleScene.csb")
     self:addChild(rootNode)
 
     -- Tilemap
-    -- local tilemap = ccexp.TMXTiledMap:create("map1.tmx")
-    -- self:addChild(tilemap, 0, 0)
+    -- local tilemap = cc.TMXTiledMap:create("map1.tmx")
+    -- tilemap:setPosition(cc.p(-640, -360))
+    -- self:addChild(tilemap)
     cam = self:getDefaultCamera()
     ninjaObj = Player:create("Ninja", 0, rootNode:getChildByName("Player"), cam)
     ninja = ninjaObj.node
@@ -37,7 +60,13 @@ function BattleScene:ctor()
     end
     local function touchEnded(touch, event)
         -- print("touchEnded")
-        self:shoot(touch)
+        -- self:shoot(touch)
+        local jsonObj = {
+            inputType = "shoot",
+            x = touch:getLocation()["x"],
+            y = touch:getLocation()["y"]
+        }
+        socket:send(json.encode(jsonObj))
         return true
     end
     local function touchCanceled(touch, event)
@@ -54,20 +83,33 @@ function BattleScene:ctor()
 
     -- 監聽鍵盤事件
     local function onKeyPressed(keyCode, event)
+        local jsonObj = {}
         if keyCode == cc.KeyCode.KEY_A then
-            ninjaObj:walk(-1)
+            -- ninjaObj:walk(-1)
+            jsonObj["inputType"] = "walk"
+            jsonObj["walkDir"] = -1
         elseif keyCode == cc.KeyCode.KEY_D then
-            ninjaObj:walk(1)
+            -- ninjaObj:walk(1)
+            jsonObj["inputType"] = "walk"
+            jsonObj["walkDir"] = 1
         elseif keyCode == cc.KeyCode.KEY_W then
-            ninjaObj:jump()
-        end
+            -- ninjaObj:jump()
+            jsonObj["inputType"] = "jump"
+        else return end
+        socket:send(json.encode(jsonObj))
     end
     local function onKeyReleased(keyCode, event)
+        local jsonObj = {}
         if keyCode == cc.KeyCode.KEY_A then
-            ninjaObj:walk(1)
+            -- ninjaObj:walk(1)
+            jsonObj["inputType"] = "walk"
+            jsonObj["walkDir"] = 1
         elseif keyCode == cc.KeyCode.KEY_D then
-            ninjaObj:walk(-1)
-        end
+            -- ninjaObj:walk(-1)
+            jsonObj["inputType"] = "walk"
+            jsonObj["walkDir"] = -1
+        else return end
+        socket:send(json.encode(jsonObj))
     end
     listen = cc.EventListenerKeyboard:create()
     listen:registerScriptHandler(onKeyPressed, cc.Handler.EVENT_KEYBOARD_PRESSED)
@@ -113,9 +155,8 @@ function BattleScene:setPhysics()
     self:getPhysicsWorld():setGravity(gravity)
 
     -- 物理世界 Debug Mode 開啟/關閉
-    -- self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_ALL)
-    self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_NONE)
-
+    self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_ALL)
+    -- self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_NONE)
     -- 設定物理世界邊框
     -- local edgeBody = cc.PhysicsBody:createEdgeBox(self.visibleSize, cc.PhysicsMaterial(1, 1, 0), 0)
     -- local edgeNode = cc.Node:create()
@@ -161,6 +202,27 @@ function BattleScene:shoot(touch)
     newBullet:setPosition(ninja:getPosition())
     local pNinja = cc.p(ninja:getPosition())
     local touchP = cc.p(touch:getLocation()["x"], touch:getLocation()["y"])
+    -- touch 螢幕座標轉成世界座標
+    local touchWorld = cc.pSub(cc.pAdd(touchP, cc.p(cam:getPosition())), cc.p(640, 360))
+    local offset = cc.pMul(cc.pNormalize(cc.pSub(touchWorld, pNinja)), 500)
+    local move = cc.MoveBy:create(0.5, offset)
+    local removeSelf = cc.RemoveSelf:create()
+    newBullet:runAction(cc.Sequence:create(move, removeSelf))
+end
+function BattleScene:shootP(touchP)
+    local newBullet = bullet:clone()
+    rootNode:addChild(newBullet)
+
+    -- 設定剛體
+    local bulletRigidBody = cc.PhysicsBody:createBox(newBullet:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
+    bulletRigidBody:setGravityEnable(false)
+    bulletRigidBody:setCollisionBitmask(0)
+    bulletRigidBody:setContactTestBitmask(bit.lshift(1, 0))
+    newBullet:setPhysicsBody(bulletRigidBody)
+
+    -- 設定動作
+    newBullet:setPosition(ninja:getPosition())
+    local pNinja = cc.p(ninja:getPosition())
     -- touch 螢幕座標轉成世界座標
     local touchWorld = cc.pSub(cc.pAdd(touchP, cc.p(cam:getPosition())), cc.p(640, 360))
     local offset = cc.pMul(cc.pNormalize(cc.pSub(touchWorld, pNinja)), 500)

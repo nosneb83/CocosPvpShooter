@@ -1,12 +1,15 @@
 local MainScene = class("MainScene", cc.load("mvc").ViewBase)
+
 local rootNode
 local loginButton
+
 function MainScene:onCreate()
     rootNode = cc.CSLoader:createNode("MainScene.csb")
     self:addChild(rootNode)
     loginButton = rootNode:getChildByName("LoginButton")
     loginButton:addTouchEventListener(self.login)
 end
+
 function MainScene:login(type)
     if type == ccui.TouchEventType.ended then
         print("into battle !!")
@@ -20,4 +23,10 @@ function MainScene:login(type)
         end
     end
 end
+
+-- 限制某數的範圍
+function math.clamp(value, min, max)
+    return math.min(math.max(value, min), max)
+end
+
 return MainScene

@@ -8,7 +8,10 @@
         <Image Name="20200313140350517.png" />
         <Image Name="2020031314051621.png" />
         <Project Name="BattleScene.csd" Type="Scene" />
+        <Image Name="bossSamllBar.png" />
+        <Image Name="bossSmallBarBg.png" />
         <Image Name="HelloWorld.png" />
+        <Image Name="hero_bar_bg.png" />
         <Image Name="levelbg.jpg" />
         <Project Name="MainScene.csd" Type="Scene" />
         <TTF Name="msjh.ttc" />

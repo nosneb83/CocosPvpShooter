@@ -14,7 +14,7 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5000" />
             <PreSize X="2.0000" Y="2.0000" />
-            <FileData Type="Normal" Path="levelbg.jpg" Plist="" />
+            <FileData Type="Normal" Path="meleeBg.jpg" Plist="" />
           </AbstractNodeData>
           <AbstractNodeData Name="Land" ActionTag="-1142023640" Tag="23" IconVisible="True" RightMargin="1280.0000" TopMargin="720.0000" ctype="SingleNodeObjectData">
             <Size X="0.0000" Y="0.0000" />

@@ -6,7 +6,7 @@
       <ObjectData Name="Scene" ctype="GameNodeObjectData">
         <Size X="1280.0000" Y="720.0000" />
         <Children>
-          <AbstractNodeData Name="Background" ActionTag="-569788972" Tag="7" IconVisible="False" LeftEage="440" RightEage="440" TopEage="247" BottomEage="247" Scale9OriginX="440" Scale9OriginY="247" Scale9Width="454" Scale9Height="256" ctype="ImageViewObjectData">
+          <AbstractNodeData Name="Background" ActionTag="-569788972" Tag="7" IconVisible="False" LeftEage="440" RightEage="440" TopEage="247" BottomEage="247" Scale9OriginX="440" Scale9OriginY="247" Scale9Width="1162" Scale9Height="506" ctype="ImageViewObjectData">
             <Size X="1280.0000" Y="720.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="640.0000" Y="360.0000" />
@@ -14,23 +14,54 @@
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.5000" Y="0.5000" />
             <PreSize X="1.0000" Y="1.0000" />
-            <FileData Type="Normal" Path="levelbg.jpg" Plist="" />
+            <FileData Type="Normal" Path="rideBg.jpg" Plist="" />
           </AbstractNodeData>
-          <AbstractNodeData Name="LoginButton" ActionTag="1292529606" Tag="20" IconVisible="False" LeftMargin="483.4012" RightMargin="483.4012" TopMargin="481.4463" BottomMargin="161.4463" TouchEnable="True" FontSize="36" ButtonText="進入殺戮戰場" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
-            <Size X="313.1975" Y="77.1075" />
+          <AbstractNodeData Name="Title" ActionTag="1687109442" Tag="56" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="420.0003" RightMargin="419.9997" TopMargin="134.9447" BottomMargin="321.0553" FontSize="80" LabelText="cocos&#xA;   battle" VerticalAlignmentType="VT_Center" ShadowOffsetX="5.0000" ShadowOffsetY="-5.0000" ShadowEnabled="True" ctype="TextObjectData">
+            <Size X="440.0000" Y="264.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="640.0000" Y="200.0000" />
+            <Position X="640.0003" Y="453.0553" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="238" B="0" />
+            <PrePosition X="0.5000" Y="0.6292" />
+            <PreSize X="0.3438" Y="0.3667" />
+            <FontResource Type="Normal" Path="PLANK___.TTF" Plist="" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="255" G="0" B="0" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="StartTextBg" ActionTag="-2141042886" Tag="50" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="256.0000" RightMargin="256.0000" TopMargin="504.0000" BottomMargin="72.0000" LeftEage="46" RightEage="46" TopEage="17" BottomEage="17" Scale9OriginX="46" Scale9OriginY="17" Scale9Width="48" Scale9Height="19" ctype="ImageViewObjectData">
+            <Size X="767.9999" Y="144.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="640.0000" Y="144.0000" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="0.2778" />
-            <PreSize X="0.2447" Y="0.1071" />
-            <FontResource Type="Normal" Path="msjh.ttc" Plist="" />
-            <TextColor A="255" R="65" G="65" B="70" />
-            <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
-            <PressedFileData Type="Default" Path="Default/Button_Press.png" Plist="" />
-            <NormalFileData Type="Default" Path="Default/Button_Normal.png" Plist="" />
+            <PrePosition X="0.5000" Y="0.2000" />
+            <PreSize X="0.6000" Y="0.2000" />
+            <FileData Type="Normal" Path="renderTitleBg.png" Plist="" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="StartText" ActionTag="2061588561" Tag="49" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="474.5000" RightMargin="474.5000" TopMargin="539.4000" BottomMargin="114.6000" FontSize="40" LabelText="press start" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="331.0000" Y="66.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="640.0000" Y="147.6000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5000" Y="0.2050" />
+            <PreSize X="0.2586" Y="0.0917" />
+            <FontResource Type="Normal" Path="PLANK___.TTF" Plist="" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="TransparentPanel" ActionTag="1811083909" Tag="46" IconVisible="False" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+            <Size X="1280.0000" Y="720.0000" />
+            <AnchorPoint />
+            <Position />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition />
+            <PreSize X="1.0000" Y="1.0000" />
+            <SingleColor A="255" R="150" G="200" B="255" />
+            <FirstColor A="255" R="150" G="200" B="255" />
+            <EndColor A="255" R="255" G="255" B="255" />
+            <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
         </Children>
       </ObjectData>

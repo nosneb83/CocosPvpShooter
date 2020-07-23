@@ -125,26 +125,38 @@ end
 
 -- 倒數
 function LobbyScene:countDown()
+    -- 數字
     local fadeIn = cc.FadeIn:create(0.3)
     local scaleTo = cc.ScaleTo:create(0.3, 1)
-    local delay = cc.DelayTime:create(0.5)
     local fadeOut = cc.FadeOut:create(0)
-    local count = cc.Sequence:create(cc.Spawn:create(fadeIn, scaleTo), delay, fadeOut)
+    local count = cc.Sequence:create(cc.Spawn:create(fadeIn, scaleTo),
+    cc.DelayTime:create(0.5), fadeOut)
+
+    -- 切換場景
     local function battleStart()
         -- print("into battle !!")
         local scene = require("app/views/BattleScene.lua"):create()
         cc.Director:getInstance():replaceScene(scene)
     end
     local battle = cc.CallFunc:create(battleStart)
+
+    -- 執行動作
     countdown3:runAction(count)
     countdown2:runAction(cc.Sequence:create(cc.DelayTime:create(1), count))
     countdown1:runAction(cc.Sequence:create(cc.DelayTime:create(2), count,
     cc.DelayTime:create(0.2), battle))
+
+    -- 播音效
+    local function countSound()
+        cc.SimpleAudioEngine:getInstance():playEffect("sound/export.mp3")
+    end
+    local sound = cc.CallFunc:create(countSound)
+    self:runAction(cc.Sequence:create(cc.DelayTime:create(0.1), sound))
 end
 
 -- 處理server傳來的指令
 function LobbyScene:handleOp(jsonObj)
-    dump(jsonObj)
+    -- dump(jsonObj)
     local op = jsonObj["op"]
     if op == "ASSIGN_ID" then
         playerID = jsonObj["playerID"]

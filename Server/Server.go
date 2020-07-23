@@ -6,6 +6,8 @@ import (
 	"net"
 )
 
+const battlePlayerCount = 1
+
 var userNum int = 0 // client流水號
 var message = make(chan string)
 var onlinemap map[string]clientData = make(map[string]clientData)
@@ -37,7 +39,7 @@ func handleConnection(conn net.Conn) {
 			if n == 0 { // 離線
 				fmt.Printf("%s [%s] 離線\n", client.name, addr)
 				delete(onlinemap, addr)
-				broadcast(fmt.Sprintf("2 %s 下線囉", client.name), addr)
+				// broadcast(fmt.Sprintf("2 %s 下線囉", client.name), addr)
 				return
 			}
 
@@ -142,7 +144,7 @@ func checkReady() bool {
 			return false
 		}
 	}
-	return readyCount >= 1
+	return readyCount >= battlePlayerCount
 }
 
 // 廣播

@@ -151,15 +151,9 @@ function BattleScene:setPhysics()
     local gravity = cc.p(0, -100000)
     self:getPhysicsWorld():setGravity(gravity)
 
-    -- 物理世界 Debug Mode 開啟/關閉
-    self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_ALL)
-    -- self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_NONE)
-    -- 設定物理世界邊框
-    -- local edgeBody = cc.PhysicsBody:createEdgeBox(self.visibleSize, cc.PhysicsMaterial(1, 1, 0), 0)
-    -- local edgeNode = cc.Node:create()
-    -- rootNode:addChild(edgeNode)
-    -- edgeNode:setPosition(self.visibleSize.width * 0.5, self.visibleSize.height * 0.5)
-    -- edgeNode:setPhysicsBody(edgeBody)
+    -- 物理世界 Debug Mode 開啟(DEBUGDRAW_ALL)/關閉(DEBUGDRAW_NONE)
+    self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_NONE)
+
     -- 怪物剛體設定
     local monsterRigidBody = cc.PhysicsBody:createBox(monster:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
     monsterRigidBody:setGravityEnable(false)

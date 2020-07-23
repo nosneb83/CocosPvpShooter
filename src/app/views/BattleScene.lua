@@ -6,6 +6,7 @@ require("json")
 require("Player")
 local scheduler = cc.Director:getInstance():getScheduler()
 local rootNode
+local landTilePrefab
 local cam
 local ninja, monster, bullet
 local ninjaObj
@@ -29,19 +30,22 @@ function BattleScene:ctor()
     rootNode = cc.CSLoader:createNode("BattleScene.csb")
     self:addChild(rootNode)
 
-    -- Tilemap
-    -- local tilemap = cc.TMXTiledMap:create("map1.tmx")
-    -- tilemap:setPosition(cc.p(-640, -360))
-    -- self:addChild(tilemap)
+    -- 地圖
+    local tilemap = cc.TMXTiledMap:create("map1.tmx")
+    landTilePrefab = rootNode:getChildByName("LandTileBox")
+    tilemap:setPosition(cc.p(-640, -360))
+    self:addChild(tilemap)
+    self:setLandCollider(tilemap)
+
+    -- 創角色
     cam = self:getDefaultCamera()
-    ninjaObj = Player:create("Ninja", 0, rootNode:getChildByName("Player"), cam)
+    ninjaObj = Player:create("Ninja", 0, rootNode:getChildByName("Player1"), cam)
     ninja = ninjaObj.node
 
     monster = rootNode:getChildByName("Monster")
     bullet = rootNode:getChildByName("Bullet")
 
     self:setPhysics()
-    self:setLandCollider()
 
     -- BGM
     cc.SimpleAudioEngine:getInstance():playMusic("bgm/BattleBgm.mp3", true)
@@ -151,15 +155,9 @@ function BattleScene:setPhysics()
     local gravity = cc.p(0, -100000)
     self:getPhysicsWorld():setGravity(gravity)
 
-    -- 物理世界 Debug Mode 開啟/關閉
+    -- 物理世界 Debug Mode 開啟(DEBUGDRAW_ALL)/關閉(DEBUGDRAW_NONE)
     self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_ALL)
-    -- self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_NONE)
-    -- 設定物理世界邊框
-    -- local edgeBody = cc.PhysicsBody:createEdgeBox(self.visibleSize, cc.PhysicsMaterial(1, 1, 0), 0)
-    -- local edgeNode = cc.Node:create()
-    -- rootNode:addChild(edgeNode)
-    -- edgeNode:setPosition(self.visibleSize.width * 0.5, self.visibleSize.height * 0.5)
-    -- edgeNode:setPhysicsBody(edgeBody)
+
     -- 怪物剛體設定
     local monsterRigidBody = cc.PhysicsBody:createBox(monster:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
     monsterRigidBody:setGravityEnable(false)
@@ -174,13 +172,45 @@ function BattleScene:setPhysics()
 end
 
 -- 添加地板Collider
-function BattleScene:setLandCollider()
-    local land = rootNode:getChildByName("Land")
-    for k, v in ipairs(land:getChildren()) do
-        local body = cc.PhysicsBody:createBox(v:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
-        body:setDynamic(false)
-        v:setPhysicsBody(body)
+function BattleScene:setLandCollider(tilemap)
+    -- dump(tilemap:getMapSize())
+    local mapSize = tilemap:getMapSize()
+    local landLayer = tilemap:getLayer("Land")
+    -- dump(landLayer:getTileAt(cc.p(8, 26)))
+    -- dump(landLayer:getTileAt(cc.p(8, 27)))
+    local colliderRoot = cc.Node:create()
+    -- local colliderRoot = landTilePrefab:clone()
+    -- colliderRoot:setPosition(cc.p(0, 0))
+    rootNode:addChild(colliderRoot)
+    for i = 0, mapSize.width - 1 do
+        for j = 0, mapSize.height - 1 do
+            if (landLayer:getTileAt(cc.p(i, j))) ~= nil then
+                local node = landTilePrefab:clone()
+                local body = cc.PhysicsBody:createBox(node:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
+                body:setDynamic(false)
+                node:setPosition(cc.p(i * 40 + 20 - 640, 1440 - (j * 40 + 20) - 360))
+                node:setPhysicsBody(body)
+                colliderRoot:addChild(node)
+            end
+        end
     end
+
+
+
+
+
+
+
+
+
+
+
+    -- local land = rootNode:getChildByName("Land")
+    -- for k, v in ipairs(land:getChildren()) do
+    --     local body = cc.PhysicsBody:createBox(v:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
+    --     body:setDynamic(false)
+    --     v:setPhysicsBody(body)
+    -- end
 end
 
 -- 子彈移動

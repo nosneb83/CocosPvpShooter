@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net"
 )
@@ -12,8 +13,11 @@ var onlinemap map[string]clientData = make(map[string]clientData)
 var chanNum string
 
 type clientData struct {
-	name string
-	conn net.Conn
+	name     string
+	conn     net.Conn
+	id       int
+	heroType int
+	ready    bool
 }
 
 // server為每個client開一個goroutine來handle
@@ -30,8 +34,6 @@ func handleConnection(conn net.Conn) {
 		var msg string
 		for {
 			n, _ := conn.Read(buf)
-			// msg = parseInput(string(buf[:n]))
-			msg = string(buf[:n])
 			if n == 0 { // 離線
 				fmt.Printf("%s [%s] 離線\n", client.name, addr)
 				delete(onlinemap, addr)
@@ -39,11 +41,54 @@ func handleConnection(conn net.Conn) {
 				return
 			}
 
-			// server印出訊息
-			fmt.Printf("%s : %s\n", client.name, msg)
+			msg = string(buf[:n])
+			// msg = parseInput(msg)
+			fmt.Printf("%s : %s\n", client.name, msg) // server印出訊息
 
-			// server 處理訊息
+			///////////////
+			// Unmarshal //
+			///////////////
+			var jsonObj map[string]interface{}
+			err := json.Unmarshal([]byte(msg), &jsonObj)
+			if err != nil {
+				fmt.Println("Unmarshal err:", err)
+			}
+
+			/////////////
+			// Process //
+			/////////////
+			if jsonObj["op"] == "CREATE_PLAYER" { // 創角
+				client.name = jsonObj["playerName"].(string)
+				client.heroType = int(jsonObj["heroType"].(float64))
+				client.ready = true
+				onlinemap[addr] = client
+			}
+
+			/////////////
+			// Marshal //
+			/////////////
+			playerIDAssign, err := json.Marshal(map[string]interface{}{
+				"op":       "ASSIGN_ID",
+				"playerID": client.id})
+			if err != nil {
+				fmt.Println("Marshal err: ", err)
+			}
+
+			//////////////
+			// Send Out //
+			//////////////
 			broadcastIncludeSelf(msg)
+			privatemsg(string(playerIDAssign), client.name)
+			// 當2名玩家都ready 即開始戰鬥
+			if checkReady() {
+				battleStartMsg, err := json.Marshal(map[string]interface{}{
+					"op": "BATTLE_START"})
+				if err != nil {
+					fmt.Println("Marshal err: ", err)
+				}
+				broadcastIncludeSelf(string(battleStartMsg))
+			}
+
 			// if strings.HasPrefix(msg, "/setname") { // 設定名稱
 			// 	client.name = strings.Split(msg, " ")[1]
 			// 	onlinemap[addr] = client
@@ -75,25 +120,29 @@ func handleConnection(conn net.Conn) {
 	}
 }
 
-// 解析input string
-func parseInput(input string) string {
-	if input == "" {
-		return ""
-	}
-	chanNum = input[0:1]
-	return input[1:]
-}
-
 // 新user加入聊天室
 func registerNewGuest(conn net.Conn) (string, clientData) {
 	addr := conn.RemoteAddr().String()
-	client := clientData{"User" + fmt.Sprintf("%d", userNum), conn}
+	client := clientData{"User" + fmt.Sprintf("%d", userNum), conn, userNum, 0, false}
 	userNum++
 	fmt.Printf("%s [%s] 登入\n", client.name, addr)
 
 	onlinemap[addr] = client
 
 	return addr, client
+}
+
+// 檢查是否所有人都ready
+func checkReady() bool {
+	readyCount := 0
+	for _, client := range onlinemap {
+		if client.ready {
+			readyCount++
+		} else {
+			return false
+		}
+	}
+	return readyCount >= 1
 }
 
 // 廣播

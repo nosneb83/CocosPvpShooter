@@ -2,7 +2,6 @@ local BattleScene = class("BattleScene", function()
     return cc.Scene:createWithPhysics()
 end)
 
-local socket = require("LuaTcpSocket"):new():init()
 require("json")
 require("Player")
 local scheduler = cc.Director:getInstance():getScheduler()
@@ -13,9 +12,6 @@ local ninjaObj
 
 function BattleScene:ctor()
     -- socket連線
-    local function onConnectStatus(code, msg)
-        -- print(msg)
-    end
     local function ReceiveCallback(msg)
         print(msg)
         local jsonObj = json.decode(msg)
@@ -27,10 +23,8 @@ function BattleScene:ctor()
             self:shootP(cc.p(jsonObj["x"], jsonObj["y"]))
         end
     end
-    socket:setConnectCallback(onConnectStatus)
     socket:setReceiveCallback(ReceiveCallback)
-    socket:connect("127.0.0.1", "8888")
-
+    -- socket:connect("127.0.0.1", "8888")
     -- 繪製Scene
     rootNode = cc.CSLoader:createNode("BattleScene.csb")
     self:addChild(rootNode)
@@ -48,6 +42,9 @@ function BattleScene:ctor()
 
     self:setPhysics()
     self:setLandCollider()
+
+    -- BGM
+    cc.SimpleAudioEngine:getInstance():playMusic("bgm/BattleBgm.mp3", true)
 
     -- 監聽點擊事件
     local function touchBegan(touch, event)

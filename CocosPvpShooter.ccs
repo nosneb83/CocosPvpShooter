@@ -11,9 +11,11 @@
         <Project Name="BattleScene.csd" Type="Scene" />
         <Image Name="bossSamllBar.png" />
         <Image Name="bossSmallBarBg.png" />
+        <Image Name="dialog_bg_2.png" />
         <Image Name="guidBg.jpg" />
         <Image Name="HelloWorld.png" />
         <Image Name="hero_bar_bg.png" />
+        <Image Name="item_selected.png" />
         <Image Name="levelbg.jpg" />
         <Project Name="LobbyScene.csd" Type="Scene" />
         <Project Name="MainScene.csd" Type="Scene" />
@@ -25,6 +27,8 @@
         <Image Name="pressed_red.png" />
         <Image Name="renderTitleBg.png" />
         <Image Name="rideBg.jpg" />
+        <Image Name="selfChatBg_new.png" />
+        <Image Name="server_tab_select.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

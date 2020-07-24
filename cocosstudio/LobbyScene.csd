@@ -19,7 +19,7 @@
           <AbstractNodeData Name="ChooseHero" ActionTag="-75274235" Tag="55" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="256.0000" RightMargin="704.0000" TopMargin="112.0000" BottomMargin="288.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="320.0000" Y="320.0000" />
             <Children>
-              <AbstractNodeData Name="HeroA" ActionTag="186686898" Tag="57" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="16.0000" RightMargin="176.0000" TopMargin="16.0000" BottomMargin="176.0000" TouchEnable="True" FontSize="20" ButtonText="Hero A" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="HeroA" ActionTag="186686898" Tag="57" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="16.0000" RightMargin="176.0000" TopMargin="16.0000" BottomMargin="176.0000" TouchEnable="True" FontSize="36" ButtonText="Hero A" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="128.0000" Y="128.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="80.0000" Y="240.0000" />
@@ -27,7 +27,7 @@
                 <CColor A="255" R="238" G="144" B="145" />
                 <PrePosition X="0.2500" Y="0.7500" />
                 <PreSize X="0.4000" Y="0.4000" />
-                <FontResource Type="Normal" Path="PLANK___.TTF" Plist="" />
+                <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
                 <TextColor A="255" R="65" G="65" B="70" />
                 <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
                 <PressedFileData Type="Default" Path="Default/Button_Press.png" Plist="" />
@@ -35,7 +35,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="HeroB" ActionTag="1125668786" Tag="58" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="176.0000" RightMargin="16.0000" TopMargin="16.0000" BottomMargin="176.0000" TouchEnable="True" FontSize="20" ButtonText="Hero B" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="HeroB" ActionTag="1125668786" Tag="58" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="176.0000" RightMargin="16.0000" TopMargin="16.0000" BottomMargin="176.0000" TouchEnable="True" FontSize="36" ButtonText="Hero B" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="128.0000" Y="128.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="240.0000" Y="240.0000" />
@@ -43,7 +43,7 @@
                 <CColor A="255" R="238" G="214" B="144" />
                 <PrePosition X="0.7500" Y="0.7500" />
                 <PreSize X="0.4000" Y="0.4000" />
-                <FontResource Type="Normal" Path="PLANK___.TTF" Plist="" />
+                <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
                 <TextColor A="255" R="65" G="65" B="70" />
                 <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
                 <PressedFileData Type="Default" Path="Default/Button_Press.png" Plist="" />
@@ -51,7 +51,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="HeroC" ActionTag="-1181836273" Tag="59" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="16.0000" RightMargin="176.0000" TopMargin="176.0000" BottomMargin="16.0000" TouchEnable="True" FontSize="20" ButtonText="hero c" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="HeroC" ActionTag="-1181836273" Tag="59" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="16.0000" RightMargin="176.0000" TopMargin="176.0000" BottomMargin="16.0000" TouchEnable="True" FontSize="36" ButtonText="Hero C" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="128.0000" Y="128.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="80.0000" Y="80.0000" />
@@ -59,7 +59,7 @@
                 <CColor A="255" R="158" G="238" B="144" />
                 <PrePosition X="0.2500" Y="0.2500" />
                 <PreSize X="0.4000" Y="0.4000" />
-                <FontResource Type="Normal" Path="PLANK___.TTF" Plist="" />
+                <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
                 <TextColor A="255" R="65" G="65" B="70" />
                 <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
                 <PressedFileData Type="Default" Path="Default/Button_Press.png" Plist="" />
@@ -67,7 +67,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="Random" ActionTag="957750673" Tag="60" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="176.0000" RightMargin="16.0000" TopMargin="176.0000" BottomMargin="16.0000" TouchEnable="True" FontSize="20" ButtonText="random" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="Random" ActionTag="957750673" Tag="60" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="176.0000" RightMargin="16.0000" TopMargin="176.0000" BottomMargin="16.0000" TouchEnable="True" FontSize="36" ButtonText="Random" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="128.0000" Y="128.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="240.0000" Y="80.0000" />
@@ -75,7 +75,7 @@
                 <CColor A="255" R="216" G="192" B="255" />
                 <PrePosition X="0.7500" Y="0.2500" />
                 <PreSize X="0.4000" Y="0.4000" />
-                <FontResource Type="Normal" Path="PLANK___.TTF" Plist="" />
+                <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
                 <TextColor A="255" R="65" G="65" B="70" />
                 <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
                 <PressedFileData Type="Default" Path="Default/Button_Press.png" Plist="" />
@@ -138,15 +138,15 @@
           <AbstractNodeData Name="PlayerNameInput" ActionTag="-1987007716" Tag="62" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="360.8000" RightMargin="719.2000" TopMargin="448.0000" BottomMargin="232.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
             <Size X="200.0000" Y="40.0000" />
             <Children>
-              <AbstractNodeData Name="Name" ActionTag="-2018921726" Tag="65" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="-91.5000" RightMargin="208.5000" TopMargin="3.5000" BottomMargin="3.5000" FontSize="20" LabelText="Name" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
-                <Size X="83.0000" Y="33.0000" />
+              <AbstractNodeData Name="Name" ActionTag="-2018921726" Tag="65" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="-90.0000" RightMargin="210.0000" FontSize="32" LabelText="Name" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+                <Size X="80.0000" Y="40.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="-50.0000" Y="20.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="0" />
                 <PrePosition X="-0.2500" Y="0.5000" />
-                <PreSize X="0.4150" Y="0.8250" />
-                <FontResource Type="Normal" Path="PLANK___.TTF" Plist="" />
+                <PreSize X="0.4000" Y="1.0000" />
+                <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
@@ -198,15 +198,15 @@
           <AbstractNodeData Name="ReadyButton" ActionTag="1741248233" Tag="44" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="500.0000" RightMargin="500.0000" TopMargin="572.8000" BottomMargin="83.2000" TouchEnable="True" FontSize="36" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="98" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="280.0000" Y="64.0000" />
             <Children>
-              <AbstractNodeData Name="Text" ActionTag="-1794058130" Tag="51" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="61.5000" RightMargin="61.5000" TopMargin="2.5000" BottomMargin="2.5000" FontSize="36" LabelText="ready" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ShadowEnabled="True" ctype="TextObjectData">
-                <Size X="157.0000" Y="59.0000" />
+              <AbstractNodeData Name="Text" ActionTag="-1794058130" Tag="51" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="75.0000" RightMargin="75.0000" TopMargin="2.0000" BottomMargin="2.0000" FontSize="48" LabelText="ready" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ShadowEnabled="True" ctype="TextObjectData">
+                <Size X="130.0000" Y="60.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="140.0000" Y="32.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.5000" Y="0.5000" />
-                <PreSize X="0.5607" Y="0.9219" />
-                <FontResource Type="Normal" Path="PLANK___.TTF" Plist="" />
+                <PreSize X="0.4643" Y="0.9375" />
+                <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>

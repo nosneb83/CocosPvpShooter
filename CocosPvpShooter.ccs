@@ -25,6 +25,10 @@
         <TTF Name="PLANK___.TTF" />
         <Image Name="pressed_blue.png" />
         <Image Name="pressed_red.png" />
+        <TTF Name="raidercrusaderexpand.ttf" />
+        <TTF Name="raidercrusaderhalf.ttf" />
+        <TTF Name="raidercrusaderital.ttf" />
+        <TTF Name="raidercrusaderlaser.ttf" />
         <Image Name="renderTitleBg.png" />
         <Image Name="rideBg.jpg" />
         <Image Name="selfChatBg_new.png" />

@@ -57,16 +57,6 @@
             <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Bullet" ActionTag="-1418905790" Tag="16" IconVisible="False" LeftMargin="-718.6927" RightMargin="1968.6927" TopMargin="51.9226" BottomMargin="638.0774" LeftEage="6" RightEage="6" TopEage="6" BottomEage="6" Scale9OriginX="6" Scale9OriginY="6" Scale9Width="8" Scale9Height="8" ctype="ImageViewObjectData">
-            <Size X="30.0000" Y="30.0000" />
-            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="-703.6927" Y="653.0774" />
-            <Scale ScaleX="1.0000" ScaleY="1.0000" />
-            <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="-0.5498" Y="0.9071" />
-            <PreSize X="0.0234" Y="0.0417" />
-            <FileData Type="Normal" Path="2020031314051621.png" Plist="" />
-          </AbstractNodeData>
           <AbstractNodeData Name="Monster" ActionTag="1996823301" Tag="38" IconVisible="False" LeftMargin="606.9944" RightMargin="619.0056" TopMargin="639.9991" BottomMargin="0.0009" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
             <Size X="54.0000" Y="80.0000" />
             <Children>
@@ -125,10 +115,10 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Player1" ActionTag="180078906" Tag="33" IconVisible="False" LeftMargin="-260.0000" RightMargin="1500.0000" TopMargin="650.0000" BottomMargin="10.0000" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+          <AbstractNodeData Name="Player" ActionTag="180078906" Tag="33" IconVisible="False" LeftMargin="-722.0663" RightMargin="1962.0663" TopMargin="620.1555" BottomMargin="39.8445" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="40.0000" Y="60.0000" />
             <Children>
-              <AbstractNodeData Name="Sprite" ActionTag="1406422336" Tag="18" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="6.5000" RightMargin="6.5000" TopMargin="10.0000" BottomMargin="10.0000" ctype="SpriteObjectData">
+              <AbstractNodeData Name="Sprite" ActionTag="1406422336" VisibleForFrame="False" Tag="18" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="6.5000" RightMargin="6.5000" TopMargin="10.0000" BottomMargin="10.0000" ctype="SpriteObjectData">
                 <Size X="27.0000" Y="40.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="20.0000" Y="30.0000" />
@@ -138,6 +128,16 @@
                 <PreSize X="0.6750" Y="0.6667" />
                 <FileData Type="Normal" Path="20200313121701658.png" Plist="" />
                 <BlendFunc Src="1" Dst="771" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="Image" ActionTag="-833880155" Tag="87" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="6.5000" RightMargin="6.5000" TopMargin="10.0000" BottomMargin="10.0000" LeftEage="8" RightEage="8" TopEage="13" BottomEage="13" Scale9OriginX="8" Scale9OriginY="13" Scale9Width="11" Scale9Height="14" ctype="ImageViewObjectData">
+                <Size X="27.0000" Y="40.0000" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="20.0000" Y="30.0000" />
+                <Scale ScaleX="1.5000" ScaleY="1.5000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.5000" Y="0.5000" />
+                <PreSize X="0.6750" Y="0.6667" />
+                <FileData Type="Normal" Path="20200313121701658.png" Plist="" />
               </AbstractNodeData>
               <AbstractNodeData Name="Name" ActionTag="1254718559" Tag="32" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="-6.0000" RightMargin="-6.0000" TopMargin="-50.5000" BottomMargin="81.5000" FontSize="20" LabelText="Ninja" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" OutlineEnabled="True" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="52.0000" Y="29.0000" />
@@ -173,17 +173,27 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="-240.0000" Y="40.0000" />
+            <Position X="-702.0663" Y="69.8445" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="-0.1875" Y="0.0556" />
+            <PrePosition X="-0.5485" Y="0.0970" />
             <PreSize X="0.0313" Y="0.0833" />
             <SingleColor A="255" R="150" G="200" B="255" />
             <FirstColor A="255" R="150" G="200" B="255" />
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="LandTileBox" ActionTag="2146351437" VisibleForFrame="False" Tag="86" IconVisible="False" LeftMargin="-715.5430" RightMargin="1959.5430" TopMargin="114.1279" BottomMargin="569.8721" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+          <AbstractNodeData Name="Bullet" ActionTag="-1418905790" Tag="16" IconVisible="False" LeftMargin="-670.0000" RightMargin="1920.0000" TopMargin="720.0000" BottomMargin="-30.0000" LeftEage="6" RightEage="6" TopEage="6" BottomEage="6" Scale9OriginX="6" Scale9OriginY="6" Scale9Width="8" Scale9Height="8" ctype="ImageViewObjectData">
+            <Size X="30.0000" Y="30.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="-655.0000" Y="-15.0000" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="-0.5117" Y="-0.0208" />
+            <PreSize X="0.0234" Y="0.0417" />
+            <FileData Type="Normal" Path="2020031314051621.png" Plist="" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="GroundTileBox" ActionTag="2146351437" VisibleForFrame="False" Tag="86" IconVisible="False" LeftMargin="-715.5430" RightMargin="1959.5430" TopMargin="114.1279" BottomMargin="569.8721" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="36.0000" Y="36.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="-697.5430" Y="587.8721" />

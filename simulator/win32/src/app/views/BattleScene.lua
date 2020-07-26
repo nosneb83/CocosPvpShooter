@@ -7,8 +7,8 @@ require("Player")
 
 -- 邏輯標籤
 GroundTag = 1000
-PlayerTag = 1001
-EnemyTag = 1002
+-- PlayerTag = 1001
+-- EnemyTag = 1002
 
 -- 物理 Bitmask
 GroundBitmask = bit.lshift(1, 0)
@@ -47,10 +47,6 @@ function BattleScene:ctor()
 
     -- 繪製Scene
     rootNode = cc.CSLoader:createNode("BattleScene.csb")
-    -- rootAnim = cc.CSLoader:createTimeline("BattleScene.csb")
-    -- local sp = rootNode:getChildByName("Player"):getChildByName("Sprite")
-    -- sp:runAction(rootAnim)
-    -- rootAnim:gotoFrameAndPlay(0, true)
     self:addChild(rootNode)
 
     -- 地圖
@@ -86,8 +82,6 @@ function BattleScene:ctor()
         local jsonObj = {
             ["playerID"] = playerID,
             inputType = "shoot",
-            -- x = touch:getLocation()["x"],
-            -- y = touch:getLocation()["y"]
             x = touchWorld.x,
             y = touchWorld.y
         }

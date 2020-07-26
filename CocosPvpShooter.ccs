@@ -5,6 +5,22 @@
       <RootFolder Name=".">
         <Folder Name="char">
           <Folder Name="char1">
+            <Folder Name="attack_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+              <Image Name="tile004.png" />
+              <Image Name="tile005.png" />
+            </Folder>
+            <Folder Name="death_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+              <Image Name="tile004.png" />
+              <Image Name="tile005.png" />
+            </Folder>
             <Folder Name="idle_frames">
               <Image Name="tile000.png" />
               <Image Name="tile001.png" />
@@ -23,6 +39,22 @@
             <Image Name="Woodcutter.png" />
           </Folder>
           <Folder Name="char2">
+            <Folder Name="attack_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+              <Image Name="tile004.png" />
+              <Image Name="tile005.png" />
+            </Folder>
+            <Folder Name="death_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+              <Image Name="tile004.png" />
+              <Image Name="tile005.png" />
+            </Folder>
             <Folder Name="idle_frames">
               <Image Name="tile000.png" />
               <Image Name="tile001.png" />
@@ -41,6 +73,22 @@
             <Project Name="PlayerAnim2.csd" Type="Node" />
           </Folder>
           <Folder Name="char3">
+            <Folder Name="attack_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+              <Image Name="tile004.png" />
+              <Image Name="tile005.png" />
+            </Folder>
+            <Folder Name="death_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+              <Image Name="tile004.png" />
+              <Image Name="tile005.png" />
+            </Folder>
             <Folder Name="idle_frames">
               <Image Name="tile000.png" />
               <Image Name="tile001.png" />
@@ -55,8 +103,8 @@
               <Image Name="tile004.png" />
               <Image Name="tile005.png" />
             </Folder>
-            <Image Name="SteamMan.png" />
             <Project Name="PlayerAnim3.csd" Type="Node" />
+            <Image Name="SteamMan.png" />
           </Folder>
         </Folder>
         <Image Name="2.png" />

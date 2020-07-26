@@ -3,7 +3,6 @@ Player = class("Player")
 require("Bullet")
 
 local scheduler = cc.Director:getInstance():getScheduler()
-local healthBar
 local bulletPrefab
 local rootNode
 
@@ -12,10 +11,11 @@ function Player:ctor(playerName, playerID, root, cam, heroType)
     self.playerName = playerName
     self.playerID = playerID
     self.health = 100
+    self.dead = false
     rootNode = root
     self.node = rootNode:getChildByName("Player"):clone()
     rootNode:addChild(self.node)
-    healthBar = self.node:getChildByName("HealthBar")
+    self.healthBar = self.node:getChildByName("HealthBar")
     self.cam = cam
     self.heroType = heroType
     self:rename(self.playerName .. "_" .. tostring(self.playerID))
@@ -35,9 +35,16 @@ function Player:ctor(playerName, playerID, root, cam, heroType)
     self.walkDirection = 0
     self.walkSpeed = 5
     local function update()
+        if self.dead then return end
         -- self.node:runAction(cc.MoveBy:create(1/60.0, cc.p(self.walkDirection * self.walkSpeed, 0)))
         self.body:applyImpulse(cc.pMul(cc.p(self.walkDirection, 0), 1200000))
         self:cameraFollow()
+        -- 判斷死亡
+        if self.healthBar:getPercent() == 0 then
+            self.dead = true
+            print(self.playerName .. " 掛惹 QQ")
+            self:playAnim("die")
+        end
     end
     scheduler:scheduleScriptFunc(update, 1 / 60, false)
 
@@ -58,27 +65,62 @@ end
 
 -- 角色動作
 function Player:walk(dir)
+    if self.dead then
+        self.walkDirection = 0
+        return
+    end
     self.walkDirection = self.walkDirection + dir
     -- 改變動畫
     if self.walkDirection > 0 then
         self.sprite:setScaleX(1)
-        self.anim:gotoFrameAndPlay(50, 80, true)
+        self:playAnim("walk")
     elseif self.walkDirection < 0 then
         self.sprite:setScaleX(-1)
-        self.anim:gotoFrameAndPlay(50, 80, true)
+        self:playAnim("walk")
     else
-        self.anim:gotoFrameAndPlay(0, 40, true)
+        self:playAnim("idle")
     end
 end
 function Player:jump()
+    if self.dead then return end
     self.body:applyImpulse(cc.pMul(cc.p(0, 1), 36000000))
 end
 function Player:shoot(touch)
+    if self.dead then return end
     local bullet = Bullet:create(rootNode, self.heroType, self.playerID)
     -- self.node:addChild(bullet.node)
     local from = cc.p(self.node:getPosition())
     -- local to = cc.pScreenToWorld(touch)
     bullet:shoot(from, touch)
+    -- self:playAnim("attack")
+end
+
+-- 動畫播放frame數
+function Player:playAnim(animName)
+    if animName == "idle" then
+        self.anim:gotoFrameAndPlay(0, 40, true)
+    elseif animName == "walk" then
+        self.anim:gotoFrameAndPlay(45, 75, true)
+    elseif animName == "attack" then -- 有bug
+        local attAnim = self.anim:clone()
+        attAnim:gotoFrameAndPlay(80, 90, false)
+        local function func()
+            if self.walkDirection > 0 then
+                self.sprite:setScaleX(1)
+                self.anim:gotoFrameAndPlay(45, 75, true)
+            elseif self.walkDirection < 0 then
+                self.sprite:setScaleX(-1)
+                self.anim:gotoFrameAndPlay(45, 75, true)
+            else
+                self.anim:gotoFrameAndPlay(0, 40, true)
+            end
+        end
+        local call = cc.CallFunc(func)
+        self.sprite:runAction(cc.Sequence:create(attAnim, call))
+    elseif animName == "die" then
+        print("play anim: die")
+        self.anim:gotoFrameAndPlay(95, 145, false)
+    end
 end
 
 -- camera跟隨

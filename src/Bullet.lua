@@ -2,11 +2,13 @@ Bullet = class("Bullet")
 
 local rootNode
 
-function Bullet:ctor(root, type) -- Node, 子彈類型
+function Bullet:ctor(root, type, playerID) -- Node, 子彈類型
     -- 參數設定
     rootNode = root
     self.node = rootNode:getChildByName("Bullet"):clone()
     rootNode:addChild(self.node)
+    self.playerID = playerID
+    self.node:setTag(1000 + self.playerID)
     self.damage = 10
     self.range = 500
     self.duration = 0.5
@@ -33,6 +35,8 @@ function Bullet:ctor(root, type) -- Node, 子彈類型
     self.body:setContactTestBitmask(GroundBitmask + CharBitmask)
     self.node:setPhysicsBody(self.body)
 
+    print("bullet id = " .. tostring(self.playerID))
+
     -- 監聽碰撞事件
     local function onContactBegin(contact)
         local nodeA = contact:getShapeA():getBody():getNode()
@@ -47,8 +51,12 @@ function Bullet:ctor(root, type) -- Node, 子彈類型
         end
 
         local enemyNode = nil
-        if nodeA:getTag() == EnemyTag then enemyNode = nodeA
-        elseif nodeB:getTag() == EnemyTag then enemyNode = nodeB
+        if nodeA:getTag() ~= 1000 + self.playerID then
+            print("set enemy: nodeA")
+            enemyNode = nodeA
+        elseif nodeB:getTag() ~= 1000 + self.playerID then
+            print("set enemy: nodeB")
+            enemyNode = nodeB
         end
         if enemyNode ~= nil then
             self:hitEnemy(enemyNode)

@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-const battlePlayerCount = 1
+const battlePlayerCount = 2
 
 var userNum int = 0 // client流水號
 var message = make(chan string)
@@ -69,9 +69,10 @@ func handleConnection(conn net.Conn) {
 			if jsonObj["op"] == "CREATE_PLAYER" { // 大廳列表
 				client = lobbyAddPlayer(addr, client, jsonObj)
 			} else if jsonObj["op"] == "PLAYER_ENTER_BATTLE" {
-
+				createBattleChar(client)
+			} else if jsonObj["inputType"] != "" {
+				broadcastIncludeSelf(msg)
 			}
-			broadcastIncludeSelf(msg)
 
 			haschat <- true
 		}
@@ -142,21 +143,16 @@ func checkReady() bool {
 }
 
 // 戰鬥場景建立各玩家角色
-func createBattleChar(token int) {
-	for _, client := range onlinemap {
-		if client.id == token {
-			battleCharData, err := json.Marshal(map[string]interface{}{
-				"op":         "CREATE_BATTLE_CHAR",
-				"playerName": client.name,
-				"playerID":   client.id,
-				"heroType":   client.heroType})
-			if err != nil {
-				fmt.Println("Marshal err: ", err)
-			}
-			broadcastIncludeSelf(string(battleCharData))
-		}
-		break
+func createBattleChar(client clientData) {
+	battleCharData, err := json.Marshal(map[string]interface{}{
+		"op":         "CREATE_BATTLE_CHAR",
+		"playerName": client.name,
+		"playerID":   client.id,
+		"heroType":   client.heroType})
+	if err != nil {
+		fmt.Println("Marshal err: ", err)
 	}
+	broadcastIncludeSelf(string(battleCharData))
 }
 
 // 廣播
@@ -178,6 +174,13 @@ func broadcastIncludeSelf(msg string) {
 func privatemsg(msg string, targetUserName string) {
 	for _, client := range onlinemap {
 		if client.name == targetUserName {
+			client.conn.Write([]byte(msg))
+		}
+	}
+}
+func pmID(msg string, targetID int) {
+	for _, client := range onlinemap {
+		if client.id == targetID {
 			client.conn.Write([]byte(msg))
 		}
 	}

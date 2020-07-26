@@ -19,13 +19,15 @@ local scheduler = cc.Director:getInstance():getScheduler()
 local rootNode
 local groundTilePrefab
 local cam
-local ninja, monster, bullet
+local ninja, monster
 local ninjaObj
+local players = {}
+local mapObjs
 
 function BattleScene:ctor()
     -- socket連線
     local function ReceiveCallback(msg)
-        print(msg)
+        print("json : " .. msg)
         -- 把每個{}分割開
         local opStrs = string.splitAfter(msg, "}")
         table.remove(opStrs, #opStrs)
@@ -36,7 +38,7 @@ function BattleScene:ctor()
         end
     end
     socket:setReceiveCallback(ReceiveCallback)
-    
+
     -- 叫server傳角色資料
     local jsonObj = {
         ["op"] = "PLAYER_ENTER_BATTLE"
@@ -53,20 +55,12 @@ function BattleScene:ctor()
     tilemap:setPosition(cc.p(-640, -360))
     self:addChild(tilemap)
     self:setGroundCollider(tilemap)
+    -- 出生點
+    mapObjs = tilemap:getObjectGroup("SpawnPoints"):getObjects()
 
-    local mapObjGroup = tilemap:getObjectGroup("SpawnPoints")
-
-    -- 創角色
-    cam = self:getDefaultCamera()
-    ninjaObj = Player:create("Ninja", 0, rootNode, cam, 1)
-    ninja = ninjaObj.node
-    local randomSpawnPoint = mapObjGroup:getObjects()[math.random(4)]
-    ninja:setPosition(cc.p(randomSpawnPoint.x - 640, randomSpawnPoint.y - 360 + 10))
-    -- print("x = " .. ninja:getPositionX() .. ", y = " .. ninja:getPositionY())
-    monster = rootNode:getChildByName("Monster")
-    monster:setTag(EnemyTag)
-    -- bullet = rootNode:getChildByName("Bullet")
-
+    -- -- 創怪物
+    -- monster = rootNode:getChildByName("Monster")
+    -- monster:setTag(EnemyTag)
     -- 設定物理
     self:setPhysics()
 
@@ -84,11 +78,14 @@ function BattleScene:ctor()
     end
     local function touchEnded(touch, event)
         -- print("touchEnded")
-        -- self:shoot(touch)
+        local touchWorld = cc.pScreenToWorld(cc.p(touch:getLocation().x, touch:getLocation().y), self:getDefaultCamera())
         local jsonObj = {
+            ["playerID"] = playerID,
             inputType = "shoot",
-            x = touch:getLocation()["x"],
-            y = touch:getLocation()["y"]
+            -- x = touch:getLocation()["x"],
+            -- y = touch:getLocation()["y"]
+            x = touchWorld.x,
+            y = touchWorld.y
         }
         socket:send(json.encode(jsonObj))
         return true
@@ -107,29 +104,28 @@ function BattleScene:ctor()
 
     -- 監聽鍵盤事件
     local function onKeyPressed(keyCode, event)
-        local jsonObj = {}
+        local jsonObj = {
+            ["playerID"] = playerID
+        }
         if keyCode == cc.KeyCode.KEY_A then
-            -- ninjaObj:walk(-1)
             jsonObj["inputType"] = "walk"
             jsonObj["walkDir"] = -1
         elseif keyCode == cc.KeyCode.KEY_D then
-            -- ninjaObj:walk(1)
             jsonObj["inputType"] = "walk"
             jsonObj["walkDir"] = 1
         elseif keyCode == cc.KeyCode.KEY_W then
-            -- ninjaObj:jump()
             jsonObj["inputType"] = "jump"
         else return end
         socket:send(json.encode(jsonObj))
     end
     local function onKeyReleased(keyCode, event)
-        local jsonObj = {}
+        local jsonObj = {
+            ["playerID"] = playerID
+        }
         if keyCode == cc.KeyCode.KEY_A then
-            -- ninjaObj:walk(1)
             jsonObj["inputType"] = "walk"
             jsonObj["walkDir"] = 1
         elseif keyCode == cc.KeyCode.KEY_D then
-            -- ninjaObj:walk(-1)
             jsonObj["inputType"] = "walk"
             jsonObj["walkDir"] = -1
         else return end
@@ -139,28 +135,6 @@ function BattleScene:ctor()
     listen:registerScriptHandler(onKeyPressed, cc.Handler.EVENT_KEYBOARD_PRESSED)
     listen:registerScriptHandler(onKeyReleased, cc.Handler.EVENT_KEYBOARD_RELEASED)
     eventDispatcher:addEventListenerWithSceneGraphPriority(listen, self)
-
-    self.monsterHealth = 100
-    -- 監聽碰撞事件
-    -- local function onContactBegin(contact)
-    --     local nodeA = contact:getShapeA():getBody():getNode()
-    --     local nodeB = contact:getShapeB():getBody():getNode()
-    --     print("tag A = " .. nodeA:getTag() .. ", tag B = " .. nodeB:getTag())
-    --     local monsterNode = nil
-    --     if nodeA:getTag() == EnemyTag then monsterNode = nodeA
-    --     elseif nodeB:getTag() == EnemyTag then monsterNode = nodeB
-    --     end
-    --     if monsterNode ~= nil then
-    --         self.monsterHealth = math.max(self.monsterHealth - 10, 0)
-    --         -- print("hit monster, health = " .. self.monsterHealth)
-    --         monsterNode:getChildByName("HealthBar"):setPercent(self.monsterHealth)
-    --     end
-    --     return true
-    -- end
-
-    -- local contactListener = cc.EventListenerPhysicsContact:create()
-    -- contactListener:registerScriptHandler(onContactBegin, cc.Handler.EVENT_PHYSICS_CONTACT_BEGIN)
-    -- eventDispatcher:addEventListenerWithFixedPriority(contactListener, 1)
 end
 
 -- 物理設定
@@ -180,20 +154,19 @@ function BattleScene:setPhysics()
     self:getPhysicsWorld():setGravity(gravity)
 
     -- 物理世界 Debug Mode 開啟(DEBUGDRAW_ALL)/關閉(DEBUGDRAW_NONE)
-    self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_ALL)
+    self:getPhysicsWorld():setDebugDrawMask(cc.PhysicsWorld.DEBUGDRAW_NONE)
 
-    -- 怪物剛體設定
-    local monsterRigidBody = cc.PhysicsBody:createBox(monster:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
-    monsterRigidBody:setGravityEnable(false)
-    monsterRigidBody:setCollisionBitmask(0)
-    monsterRigidBody:setCategoryBitmask(CharBitmask)
-    monsterRigidBody:setContactTestBitmask(BulletBitmask)
-    monster:setPhysicsBody(monsterRigidBody)
-
-    -- 怪物移動
-    local moveLeft = cc.MoveBy:create(2, cc.p(-160, 0))
-    local moveRight = cc.MoveBy:create(2, cc.p(160, 0))
-    monster:runAction(cc.RepeatForever:create(cc.Sequence:create(moveLeft, moveRight)))
+    -- -- 怪物剛體設定
+    -- local monsterRigidBody = cc.PhysicsBody:createBox(monster:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
+    -- monsterRigidBody:setGravityEnable(false)
+    -- monsterRigidBody:setCollisionBitmask(0)
+    -- monsterRigidBody:setCategoryBitmask(CharBitmask)
+    -- monsterRigidBody:setContactTestBitmask(BulletBitmask)
+    -- monster:setPhysicsBody(monsterRigidBody)
+    -- -- 怪物移動
+    -- local moveLeft = cc.MoveBy:create(2, cc.p(-160, 0))
+    -- local moveRight = cc.MoveBy:create(2, cc.p(160, 0))
+    -- monster:runAction(cc.RepeatForever:create(cc.Sequence:create(moveLeft, moveRight)))
 end
 
 -- 添加地板Collider
@@ -239,7 +212,7 @@ function cc.pTileToWorld(tileCoor)
 end
 
 -- 轉換螢幕座標至世界座標
-function cc.pScreenToWorld(screenCoor)
+function cc.pScreenToWorld(screenCoor, cam)
     -- 常數
     local camOffset = cc.p(640, 360)
     -- 計算過程
@@ -248,67 +221,27 @@ function cc.pScreenToWorld(screenCoor)
     return worldCoor
 end
 
--- 子彈移動
--- function BattleScene:shoot(touch)
---     local newBullet = bullet:clone()
---     rootNode:addChild(newBullet)
-
---     -- 設定剛體
---     local bulletRigidBody = cc.PhysicsBody:createBox(newBullet:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
---     bulletRigidBody:setGravityEnable(false)
---     bulletRigidBody:setCollisionBitmask(0)
---     bulletRigidBody:setContactTestBitmask(bit.lshift(1, 0))
---     newBullet:setPhysicsBody(bulletRigidBody)
-
---     -- 設定動作
---     newBullet:setPosition(ninja:getPosition())
---     local pNinja = cc.p(ninja:getPosition())
---     local touchP = cc.p(touch:getLocation()["x"], touch:getLocation()["y"])
---     -- touch 螢幕座標轉成世界座標
---     local touchWorld = cc.pSub(cc.pAdd(touchP, cc.p(cam:getPosition())), cc.p(640, 360))
---     local offset = cc.pMul(cc.pNormalize(cc.pSub(touchWorld, pNinja)), 500)
---     local move = cc.MoveBy:create(0.5, offset)
---     local removeSelf = cc.RemoveSelf:create()
---     newBullet:runAction(cc.Sequence:create(move, removeSelf))
--- end
--- function BattleScene:shootP(touchP)
---     local newBullet = bullet:clone()
---     rootNode:addChild(newBullet)
-
---     -- 設定剛體
---     local bulletRigidBody = cc.PhysicsBody:createBox(newBullet:getContentSize(), cc.PhysicsMaterial(1, 0, 0))
---     bulletRigidBody:setDynamic(false)
---     bulletRigidBody:setCollisionBitmask(0)
---     bulletRigidBody:setContactTestBitmask(bit.lshift(1, 0))
---     newBullet:setPhysicsBody(bulletRigidBody)
-
---     -- 設定動作
---     newBullet:setPosition(ninja:getPosition())
---     local pNinja = cc.p(ninja:getPosition())
---     -- touch 螢幕座標轉成世界座標
---     local touchWorld = cc.pScreenToWorld(touchP)
---     local offset = cc.pMul(cc.pNormalize(cc.pSub(touchWorld, pNinja)), 500)
---     local move = cc.MoveBy:create(0.5, offset)
---     local removeSelf = cc.RemoveSelf:create()
---     newBullet:runAction(cc.Sequence:create(move, removeSelf))
--- end
-
 -- 處理server傳來的指令
 function BattleScene:handleOp(jsonObj)
     -- dump(jsonObj)
     local op = jsonObj["op"]
     if op == "CREATE_BATTLE_CHAR" then
-        -- local item = readyListItemPrefab:clone()
-        -- item:getChildByName("PlayerName"):setString(jsonObj["playerName"])
-        -- readyList:pushBackCustomItem(item)
+        local battleChar = Player:create(jsonObj["playerName"], jsonObj["playerID"], rootNode, nil, jsonObj["heroType"])
+        if battleChar.playerID == playerID then
+            battleChar.cam = self:getDefaultCamera()
+            -- battleChar.node:setTag(PlayerTag)
+        end
+        local spawnPoint = mapObjs[battleChar.playerID]
+        battleChar.node:setPosition(cc.p(spawnPoint.x - 640, spawnPoint.y - 360 + 30))
+        players[jsonObj["playerID"]] = battleChar
+        -- dump(players)
     end
     if jsonObj["inputType"] == "walk" then
-        ninjaObj:walk(jsonObj["walkDir"])
+        players[jsonObj["playerID"]]:walk(jsonObj["walkDir"])
     elseif jsonObj["inputType"] == "jump" then
-        ninjaObj:jump()
+        players[jsonObj["playerID"]]:jump()
     elseif jsonObj["inputType"] == "shoot" then
-        -- self:shootP(cc.p(jsonObj["x"], jsonObj["y"]))
-        ninjaObj:shoot(cc.p(jsonObj["x"], jsonObj["y"]))
+        players[jsonObj["playerID"]]:shoot(cc.p(jsonObj["x"], jsonObj["y"]))
     end
 end
 

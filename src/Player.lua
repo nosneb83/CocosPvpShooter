@@ -11,14 +11,14 @@ local rootNode
 function Player:ctor(playerName, playerID, root, cam, heroType)
     self.playerName = playerName
     self.playerID = playerID
-    self.health = 100.0
+    self.health = 100
     rootNode = root
     self.node = rootNode:getChildByName("Player"):clone()
     rootNode:addChild(self.node)
     healthBar = self.node:getChildByName("HealthBar")
     self.cam = cam
     self.heroType = heroType
-    self:rename(self.playerName)
+    self:rename(self.playerName .. "_" .. tostring(self.playerID))
 
     local MATERIAL_DEFAULT = cc.PhysicsMaterial(1, 0, 0) -- 密度、彈性係數、摩擦力
     self.body = cc.PhysicsBody:createBox(self.node:getContentSize(), MATERIAL_DEFAULT)
@@ -28,7 +28,7 @@ function Player:ctor(playerName, playerID, root, cam, heroType)
     self.body:setCollisionBitmask(GroundBitmask)
     self.body:setContactTestBitmask(BulletBitmask)
     self.node:setPhysicsBody(self.body)
-    self.node:setTag(PlayerTag)
+    self.node:setTag(1000 + self.playerID)
 
     -- 角色橫向移動
     self.walkDirection = 0
@@ -54,11 +54,11 @@ function Player:jump()
     self.body:applyImpulse(cc.pMul(cc.p(0, 1), 36000000))
 end
 function Player:shoot(touch)
-    local bullet = Bullet:create(rootNode, self.heroType)
+    local bullet = Bullet:create(rootNode, self.heroType, self.playerID)
     -- self.node:addChild(bullet.node)
     local from = cc.p(self.node:getPosition())
-    local to = cc.pScreenToWorld(touch)
-    bullet:shoot(from, to)
+    -- local to = cc.pScreenToWorld(touch)
+    bullet:shoot(from, touch)
 end
 
 -- camera跟隨

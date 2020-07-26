@@ -156,11 +156,13 @@ end
 
 -- 處理server傳來的指令
 function LobbyScene:handleOp(jsonObj)
-    -- dump(jsonObj)
+    -- 把jsonObj印出來看
+    dump(jsonObj)
+    -- 處理指令
     local op = jsonObj["op"]
     if op == "ASSIGN_ID" then
         playerID = jsonObj["playerID"]
-        -- print("set id = " .. playerID)
+        print("set id = " .. playerID)
     elseif op == "CREATE_PLAYER" then
         local item = readyListItemPrefab:clone()
         item:getChildByName("PlayerName"):setString(jsonObj["playerName"])

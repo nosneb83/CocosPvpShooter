@@ -57,7 +57,7 @@
             <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Monster" ActionTag="1996823301" Tag="38" IconVisible="False" LeftMargin="606.9944" RightMargin="619.0056" TopMargin="639.9991" BottomMargin="0.0009" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+          <AbstractNodeData Name="Monster" ActionTag="1996823301" VisibleForFrame="False" Tag="38" IconVisible="False" LeftMargin="606.9944" RightMargin="619.0056" TopMargin="639.9991" BottomMargin="0.0009" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
             <Size X="54.0000" Y="80.0000" />
             <Children>
               <AbstractNodeData Name="Name" ActionTag="657987230" Tag="39" IconVisible="False" LeftMargin="-14.0000" RightMargin="-14.0000" TopMargin="-41.5000" BottomMargin="92.5000" FontSize="20" LabelText="Monster" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" OutlineEnabled="True" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">

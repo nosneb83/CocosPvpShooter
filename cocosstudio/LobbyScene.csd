@@ -19,12 +19,12 @@
           <AbstractNodeData Name="ChooseHero" ActionTag="-75274235" Tag="55" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="256.0000" RightMargin="704.0000" TopMargin="112.0000" BottomMargin="288.0000" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="320.0000" Y="320.0000" />
             <Children>
-              <AbstractNodeData Name="HeroA" ActionTag="186686898" Tag="57" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="16.0000" RightMargin="176.0000" TopMargin="16.0000" BottomMargin="176.0000" TouchEnable="True" FontSize="36" ButtonText="Hero A" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="HeroA" ActionTag="186686898" Tag="57" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="16.0000" RightMargin="176.0000" TopMargin="16.0000" BottomMargin="176.0000" TouchEnable="True" FontSize="36" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="128.0000" Y="128.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="80.0000" Y="240.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <CColor A="255" R="238" G="144" B="145" />
+                <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.2500" Y="0.7500" />
                 <PreSize X="0.4000" Y="0.4000" />
                 <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
@@ -35,12 +35,12 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="HeroB" ActionTag="1125668786" Tag="58" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="176.0000" RightMargin="16.0000" TopMargin="16.0000" BottomMargin="176.0000" TouchEnable="True" FontSize="36" ButtonText="Hero B" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="HeroB" ActionTag="1125668786" Tag="58" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="176.0000" RightMargin="16.0000" TopMargin="16.0000" BottomMargin="176.0000" TouchEnable="True" FontSize="36" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="128.0000" Y="128.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="240.0000" Y="240.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <CColor A="255" R="238" G="214" B="144" />
+                <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.7500" Y="0.7500" />
                 <PreSize X="0.4000" Y="0.4000" />
                 <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
@@ -51,12 +51,12 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="HeroC" ActionTag="-1181836273" Tag="59" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="16.0000" RightMargin="176.0000" TopMargin="176.0000" BottomMargin="16.0000" TouchEnable="True" FontSize="36" ButtonText="Hero C" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="HeroC" ActionTag="-1181836273" Tag="59" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="16.0000" RightMargin="176.0000" TopMargin="176.0000" BottomMargin="16.0000" TouchEnable="True" FontSize="36" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="128.0000" Y="128.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="80.0000" Y="80.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <CColor A="255" R="158" G="238" B="144" />
+                <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.2500" Y="0.2500" />
                 <PreSize X="0.4000" Y="0.4000" />
                 <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
@@ -67,15 +67,15 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="Random" ActionTag="957750673" Tag="60" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="176.0000" RightMargin="16.0000" TopMargin="176.0000" BottomMargin="16.0000" TouchEnable="True" FontSize="36" ButtonText="Random" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+              <AbstractNodeData Name="Random" ActionTag="957750673" Tag="60" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftMargin="176.0000" RightMargin="16.0000" TopMargin="176.0000" BottomMargin="16.0000" TouchEnable="True" FontSize="100" ButtonText="?" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="16" Scale9Height="14" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
                 <Size X="128.0000" Y="128.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                 <Position X="240.0000" Y="80.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <CColor A="255" R="216" G="192" B="255" />
+                <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.7500" Y="0.2500" />
                 <PreSize X="0.4000" Y="0.4000" />
-                <FontResource Type="Normal" Path="raidercrusaderlaser.ttf" Plist="" />
+                <FontResource Type="Normal" Path="raidercrusaderexpand.ttf" Plist="" />
                 <TextColor A="255" R="65" G="65" B="70" />
                 <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
                 <PressedFileData Type="Default" Path="Default/Button_Press.png" Plist="" />
@@ -253,27 +253,27 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="ReadyPlayer" ActionTag="-295310442" Tag="72" IconVisible="False" LeftMargin="777.8913" RightMargin="202.1086" TopMargin="-97.6315" BottomMargin="737.6315" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
-            <Size X="300.0000" Y="80.0000" />
+          <AbstractNodeData Name="ReadyPlayer" ActionTag="-295310442" Tag="72" IconVisible="False" LeftMargin="767.8913" RightMargin="192.1086" TopMargin="-97.6315" BottomMargin="737.6315" TouchEnable="True" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+            <Size X="320.0000" Y="80.0000" />
             <Children>
-              <AbstractNodeData Name="Image" ActionTag="-252138344" Tag="73" IconVisible="False" LeftMargin="19.2349" RightMargin="239.0837" TopMargin="9.0497" BottomMargin="9.2002" LeftEage="8" RightEage="8" TopEage="13" BottomEage="13" Scale9OriginX="8" Scale9OriginY="13" Scale9Width="11" Scale9Height="14" ctype="ImageViewObjectData">
-                <Size X="41.6813" Y="61.7501" />
+              <AbstractNodeData Name="Image_8" ActionTag="1813830885" Tag="101" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" PercentWidthEnable="True" PercentHeightEnable="True" PercentWidthEnabled="True" PercentHeightEnabled="True" LeftEage="17" RightEage="17" TopEage="16" BottomEage="16" Scale9OriginX="17" Scale9OriginY="16" Scale9Width="474" Scale9Height="51" ctype="ImageViewObjectData">
+                <Size X="320.0000" Y="80.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="40.0756" Y="40.0752" />
+                <Position X="160.0000" Y="40.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.1336" Y="0.5009" />
-                <PreSize X="0.1389" Y="0.7719" />
-                <FileData Type="Normal" Path="20200313121701658.png" Plist="" />
+                <PrePosition X="0.5000" Y="0.5000" />
+                <PreSize X="1.0000" Y="1.0000" />
+                <FileData Type="Normal" Path="tip_bg.png" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="PlayerName" ActionTag="1979268095" Tag="74" IconVisible="False" LeftMargin="83.1563" RightMargin="50.8438" TopMargin="17.5764" BottomMargin="14.4236" FontSize="36" LabelText="Text Label" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+              <AbstractNodeData Name="PlayerName" ActionTag="1979268095" Tag="74" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="77.0000" RightMargin="77.0000" TopMargin="16.0000" BottomMargin="16.0000" FontSize="36" LabelText="Text Label" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="166.0000" Y="48.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="166.1563" Y="38.4236" />
+                <Position X="160.0000" Y="40.0000" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5539" Y="0.4803" />
-                <PreSize X="0.5533" Y="0.6000" />
+                <PrePosition X="0.5000" Y="0.5000" />
+                <PreSize X="0.5188" Y="0.6000" />
                 <FontResource Type="Normal" Path="msjh.ttc" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
@@ -284,7 +284,7 @@
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.7249" Y="1.0800" />
-            <PreSize X="0.2344" Y="0.1111" />
+            <PreSize X="0.2500" Y="0.1111" />
             <SingleColor A="255" R="150" G="200" B="255" />
             <FirstColor A="255" R="150" G="200" B="255" />
             <EndColor A="255" R="255" G="255" B="255" />

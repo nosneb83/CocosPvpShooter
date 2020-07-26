@@ -3,6 +3,62 @@
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
+        <Folder Name="char">
+          <Folder Name="char1">
+            <Folder Name="idle_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+            </Folder>
+            <Folder Name="walk_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+              <Image Name="tile004.png" />
+              <Image Name="tile005.png" />
+            </Folder>
+            <Project Name="PlayerAnim1.csd" Type="Node" />
+            <Image Name="Woodcutter.png" />
+          </Folder>
+          <Folder Name="char2">
+            <Folder Name="idle_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+            </Folder>
+            <Folder Name="walk_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+              <Image Name="tile004.png" />
+              <Image Name="tile005.png" />
+            </Folder>
+            <Image Name="GraveRobber.png" />
+            <Project Name="PlayerAnim2.csd" Type="Node" />
+          </Folder>
+          <Folder Name="char3">
+            <Folder Name="idle_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+            </Folder>
+            <Folder Name="walk_frames">
+              <Image Name="tile000.png" />
+              <Image Name="tile001.png" />
+              <Image Name="tile002.png" />
+              <Image Name="tile003.png" />
+              <Image Name="tile004.png" />
+              <Image Name="tile005.png" />
+            </Folder>
+            <Image Name="SteamMan.png" />
+            <Project Name="PlayerAnim3.csd" Type="Node" />
+          </Folder>
+        </Folder>
         <Image Name="2.png" />
         <Image Name="20200313121701658.png" />
         <Image Name="20200313140350517.png" />
@@ -14,7 +70,6 @@
         <Image Name="dialog_bg_2.png" />
         <Image Name="guidBg.jpg" />
         <Image Name="HelloWorld.png" />
-        <Image Name="hero_bar_bg.png" />
         <Image Name="item_selected.png" />
         <Image Name="levelbg.jpg" />
         <Project Name="LobbyScene.csd" Type="Scene" />
@@ -31,8 +86,10 @@
         <TTF Name="raidercrusaderlaser.ttf" />
         <Image Name="renderTitleBg.png" />
         <Image Name="rideBg.jpg" />
+        <Image Name="selfChatBg.png" />
         <Image Name="selfChatBg_new.png" />
         <Image Name="server_tab_select.png" />
+        <Image Name="tip_bg.png" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -24,10 +24,13 @@ function LobbyScene:ctor()
 
     chooseHeroA = rootNode:getChildByName("ChooseHero"):getChildByName("HeroA")
     hightlightA = rootNode:getChildByName("ChooseHero"):getChildByName("HightlightA")
+    self:addSpriteAnim(chooseHeroA, 1, cc.p(64, 64), 2)
     chooseHeroB = rootNode:getChildByName("ChooseHero"):getChildByName("HeroB")
     hightlightB = rootNode:getChildByName("ChooseHero"):getChildByName("HightlightB")
+    self:addSpriteAnim(chooseHeroB, 2, cc.p(64, 64), 2)
     chooseHeroC = rootNode:getChildByName("ChooseHero"):getChildByName("HeroC")
     hightlightC = rootNode:getChildByName("ChooseHero"):getChildByName("HightlightC")
+    self:addSpriteAnim(chooseHeroC, 3, cc.p(64, 64), 2)
     randomHero = rootNode:getChildByName("ChooseHero"):getChildByName("Random")
     hightlightR = rootNode:getChildByName("ChooseHero"):getChildByName("HightlightR")
     chooseHeroA:addTouchEventListener(self.chooseHeroA)
@@ -65,6 +68,19 @@ function LobbyScene:ctor()
     end
     socket:setReceiveCallback(ReceiveCallback)
     socket:connect("127.0.0.1", "8888")
+end
+
+-- 添加sprite動畫
+
+function LobbyScene:addSpriteAnim(node, heroType, offset, scale)
+    local animPath = "char/char" .. tostring(heroType) .. "/PlayerAnim" .. tostring(heroType) .. ".csb"
+    local sprite = cc.CSLoader:createNode(animPath)
+    sprite:setPosition(offset)
+    sprite:setScale(scale, scale)
+    local anim = cc.CSLoader:createTimeline(animPath)
+    sprite:runAction(anim)
+    anim:gotoFrameAndPlay(0, 40, true)
+    node:addChild(sprite)
 end
 
 -- 選擇英雄
@@ -166,6 +182,7 @@ function LobbyScene:handleOp(jsonObj)
     elseif op == "CREATE_PLAYER" then
         local item = readyListItemPrefab:clone()
         item:getChildByName("PlayerName"):setString(jsonObj["playerName"])
+        self:addSpriteAnim(item, jsonObj["heroType"], cc.p(40, 40), 1)
         readyList:pushBackCustomItem(item)
     elseif op == "BATTLE_START" then
         -- print("into battle !!")

@@ -16,7 +16,7 @@ CharBitmask = bit.lshift(1, 1)
 BulletBitmask = bit.lshift(1, 2)
 
 local scheduler = cc.Director:getInstance():getScheduler()
-local rootNode
+local rootNode, rootAnim
 local groundTilePrefab
 local cam
 local ninja, monster
@@ -47,6 +47,10 @@ function BattleScene:ctor()
 
     -- 繪製Scene
     rootNode = cc.CSLoader:createNode("BattleScene.csb")
+    -- rootAnim = cc.CSLoader:createTimeline("BattleScene.csb")
+    -- local sp = rootNode:getChildByName("Player"):getChildByName("Sprite")
+    -- sp:runAction(rootAnim)
+    -- rootAnim:gotoFrameAndPlay(0, true)
     self:addChild(rootNode)
 
     -- 地圖
@@ -227,14 +231,14 @@ function BattleScene:handleOp(jsonObj)
     local op = jsonObj["op"]
     if op == "CREATE_BATTLE_CHAR" then
         local battleChar = Player:create(jsonObj["playerName"], jsonObj["playerID"], rootNode, nil, jsonObj["heroType"])
-        if battleChar.playerID == playerID then
+        if battleChar.playerID == playerID then -- 是自己
             battleChar.cam = self:getDefaultCamera()
-            -- battleChar.node:setTag(PlayerTag)
+        else -- 是別人
+            battleChar.node:getChildByName("Name"):setTextColor(cc.c3b(255, 0, 0))
         end
         local spawnPoint = mapObjs[battleChar.playerID]
         battleChar.node:setPosition(cc.p(spawnPoint.x - 640, spawnPoint.y - 360 + 30))
         players[jsonObj["playerID"]] = battleChar
-        -- dump(players)
     end
     if jsonObj["inputType"] == "walk" then
         players[jsonObj["playerID"]]:walk(jsonObj["walkDir"])

@@ -19,7 +19,7 @@
           <AbstractNodeData Name="Land" ActionTag="-1142023640" VisibleForFrame="False" Tag="23" IconVisible="True" RightMargin="1280.0000" TopMargin="720.0000" ctype="SingleNodeObjectData">
             <Size X="0.0000" Y="0.0000" />
             <Children>
-              <AbstractNodeData Name="Land_1" ActionTag="-267054592" Tag="22" IconVisible="False" LeftMargin="-320.0000" RightMargin="-1600.0000" TopMargin="0.0000" BottomMargin="-40.0000" LeftEage="42" RightEage="42" TopEage="42" BottomEage="42" Scale9OriginX="42" Scale9OriginY="42" Scale9Width="44" Scale9Height="44" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="Land_1" ActionTag="-267054592" Tag="22" IconVisible="False" LeftMargin="-320.0000" RightMargin="-1600.0000" TopMargin="0.0000" BottomMargin="-40.0000" LeftEage="42" RightEage="42" TopEage="42" BottomEage="42" Scale9OriginX="-2" Scale9OriginY="-2" Scale9Width="44" Scale9Height="44" ctype="ImageViewObjectData">
                 <Size X="1920.0000" Y="40.0000" />
                 <AnchorPoint />
                 <Position X="-320.0000" Y="-40.0000" />
@@ -29,7 +29,7 @@
                 <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="2.png" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="Land_2" ActionTag="-847056383" Tag="24" IconVisible="False" LeftMargin="-120.0000" RightMargin="-160.0000" TopMargin="-120.0000" BottomMargin="80.0000" LeftEage="42" RightEage="42" TopEage="32" BottomEage="35" Scale9OriginX="42" Scale9OriginY="32" Scale9Width="44" Scale9Height="61" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="Land_2" ActionTag="-847056383" Tag="24" IconVisible="False" LeftMargin="-120.0000" RightMargin="-160.0000" TopMargin="-120.0000" BottomMargin="80.0000" LeftEage="42" RightEage="42" TopEage="32" BottomEage="35" Scale9OriginX="-2" Scale9OriginY="5" Scale9Width="44" Scale9Height="27" ctype="ImageViewObjectData">
                 <Size X="280.0000" Y="40.0000" />
                 <AnchorPoint />
                 <Position X="-120.0000" Y="80.0000" />
@@ -39,7 +39,7 @@
                 <PreSize X="0.0000" Y="0.0000" />
                 <FileData Type="Normal" Path="2.png" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="Land_3" ActionTag="717407601" Tag="25" IconVisible="False" LeftMargin="80.0000" RightMargin="-360.0000" TopMargin="-240.0000" BottomMargin="200.0000" LeftEage="42" RightEage="42" TopEage="32" BottomEage="35" Scale9OriginX="42" Scale9OriginY="32" Scale9Width="44" Scale9Height="61" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="Land_3" ActionTag="717407601" Tag="25" IconVisible="False" LeftMargin="80.0000" RightMargin="-360.0000" TopMargin="-240.0000" BottomMargin="200.0000" LeftEage="42" RightEage="42" TopEage="32" BottomEage="35" Scale9OriginX="-2" Scale9OriginY="5" Scale9Width="44" Scale9Height="27" ctype="ImageViewObjectData">
                 <Size X="280.0000" Y="40.0000" />
                 <AnchorPoint />
                 <Position X="80.0000" Y="200.0000" />
@@ -115,30 +115,9 @@
             <EndColor A="255" R="255" G="255" B="255" />
             <ColorVector ScaleY="1.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Player" ActionTag="180078906" Tag="33" IconVisible="False" LeftMargin="-722.0663" RightMargin="1962.0663" TopMargin="620.1555" BottomMargin="39.8445" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
+          <AbstractNodeData Name="Player" ActionTag="180078906" Tag="33" IconVisible="False" LeftMargin="-727.3941" RightMargin="1967.3940" TopMargin="623.8682" BottomMargin="36.1319" ClipAble="False" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
             <Size X="40.0000" Y="60.0000" />
             <Children>
-              <AbstractNodeData Name="Sprite" ActionTag="1406422336" VisibleForFrame="False" Tag="18" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="6.5000" RightMargin="6.5000" TopMargin="10.0000" BottomMargin="10.0000" ctype="SpriteObjectData">
-                <Size X="27.0000" Y="40.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="20.0000" Y="30.0000" />
-                <Scale ScaleX="1.5000" ScaleY="1.5000" />
-                <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5000" Y="0.5000" />
-                <PreSize X="0.6750" Y="0.6667" />
-                <FileData Type="Normal" Path="20200313121701658.png" Plist="" />
-                <BlendFunc Src="1" Dst="771" />
-              </AbstractNodeData>
-              <AbstractNodeData Name="Image" ActionTag="-833880155" Tag="87" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="6.5000" RightMargin="6.5000" TopMargin="10.0000" BottomMargin="10.0000" LeftEage="8" RightEage="8" TopEage="13" BottomEage="13" Scale9OriginX="8" Scale9OriginY="13" Scale9Width="11" Scale9Height="14" ctype="ImageViewObjectData">
-                <Size X="27.0000" Y="40.0000" />
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="20.0000" Y="30.0000" />
-                <Scale ScaleX="1.5000" ScaleY="1.5000" />
-                <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5000" Y="0.5000" />
-                <PreSize X="0.6750" Y="0.6667" />
-                <FileData Type="Normal" Path="20200313121701658.png" Plist="" />
-              </AbstractNodeData>
               <AbstractNodeData Name="Name" ActionTag="1254718559" Tag="32" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="-6.0000" RightMargin="-6.0000" TopMargin="-50.5000" BottomMargin="81.5000" FontSize="20" LabelText="Ninja" HorizontalAlignmentType="HT_Center" VerticalAlignmentType="VT_Center" OutlineEnabled="True" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
                 <Size X="52.0000" Y="29.0000" />
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -173,10 +152,10 @@
               </AbstractNodeData>
             </Children>
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="-702.0663" Y="69.8445" />
+            <Position X="-707.3941" Y="66.1319" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="-0.5485" Y="0.0970" />
+            <PrePosition X="-0.5527" Y="0.0918" />
             <PreSize X="0.0313" Y="0.0833" />
             <SingleColor A="255" R="150" G="200" B="255" />
             <FirstColor A="255" R="150" G="200" B="255" />

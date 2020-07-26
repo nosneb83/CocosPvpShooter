@@ -68,6 +68,7 @@ func handleConnection(conn net.Conn) {
 			/////////////
 			if jsonObj["op"] == "CREATE_PLAYER" { // 大廳列表
 				client = lobbyAddPlayer(addr, client, jsonObj)
+				broadcastIncludeSelf(msg)
 			} else if jsonObj["op"] == "PLAYER_ENTER_BATTLE" {
 				createBattleChar(client)
 			} else if jsonObj["inputType"] != "" {

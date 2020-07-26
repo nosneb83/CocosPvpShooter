@@ -20,6 +20,7 @@ function Player:ctor(playerName, playerID, root, cam, heroType)
     self.heroType = heroType
     self:rename(self.playerName .. "_" .. tostring(self.playerID))
 
+    -- 角色剛體
     local MATERIAL_DEFAULT = cc.PhysicsMaterial(1, 0, 0) -- 密度、彈性係數、摩擦力
     self.body = cc.PhysicsBody:createBox(self.node:getContentSize(), MATERIAL_DEFAULT)
     self.body:setRotationEnable(false)
@@ -39,6 +40,15 @@ function Player:ctor(playerName, playerID, root, cam, heroType)
         self:cameraFollow()
     end
     scheduler:scheduleScriptFunc(update, 1 / 60, false)
+
+    -- 角色動畫
+    local animPath = "char/char" .. tostring(self.heroType) .. "/PlayerAnim" .. tostring(self.heroType) .. ".csb"
+    self.sprite = cc.CSLoader:createNode(animPath)
+    self.sprite:setPosition(cc.p(20, 30))
+    self.anim = cc.CSLoader:createTimeline(animPath)
+    self.sprite:runAction(self.anim)
+    self.anim:gotoFrameAndPlay(0, 40, true)
+    self.node:addChild(self.sprite)
 end
 
 -- 設定角色名稱
@@ -49,6 +59,16 @@ end
 -- 角色動作
 function Player:walk(dir)
     self.walkDirection = self.walkDirection + dir
+    -- 改變動畫
+    if self.walkDirection > 0 then
+        self.sprite:setScaleX(1)
+        self.anim:gotoFrameAndPlay(50, 80, true)
+    elseif self.walkDirection < 0 then
+        self.sprite:setScaleX(-1)
+        self.anim:gotoFrameAndPlay(50, 80, true)
+    else
+        self.anim:gotoFrameAndPlay(0, 40, true)
+    end
 end
 function Player:jump()
     self.body:applyImpulse(cc.pMul(cc.p(0, 1), 36000000))

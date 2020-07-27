@@ -9,7 +9,6 @@ require("Player")
 GroundTag = 1000
 -- PlayerTag = 1001
 -- EnemyTag = 1002
-
 -- 物理 Bitmask
 GroundBitmask = bit.lshift(1, 0)
 CharBitmask = bit.lshift(1, 1)
@@ -48,12 +47,11 @@ function BattleScene:ctor()
     -- 繪製Scene
     rootNode = cc.CSLoader:createNode("BattleScene.csb")
     self:addChild(rootNode)
-
     -- 地圖
     local tilemap = cc.TMXTiledMap:create("map1.tmx")
     groundTilePrefab = rootNode:getChildByName("GroundTileBox")
     tilemap:setPosition(cc.p(-640, -360))
-    self:addChild(tilemap)
+    rootNode:addChild(tilemap)
     self:setGroundCollider(tilemap)
     -- 出生點
     mapObjs = tilemap:getObjectGroup("SpawnPoints"):getObjects()
@@ -133,6 +131,25 @@ function BattleScene:ctor()
     listen:registerScriptHandler(onKeyPressed, cc.Handler.EVENT_KEYBOARD_PRESSED)
     listen:registerScriptHandler(onKeyReleased, cc.Handler.EVENT_KEYBOARD_RELEASED)
     eventDispatcher:addEventListenerWithSceneGraphPriority(listen, self)
+
+    -- 判斷獲勝
+    local function detectWin()
+        if players[playerID].win then return end
+        local anyoneElseAlive = false
+        for k, v in pairs(players) do
+            if k ~= playerID and v.dead == false then
+                anyoneElseAlive = true
+            end
+        end
+        if anyoneElseAlive == false then
+            players[playerID].win = true
+            print(players[playerID].playerName .. " WIN !!")
+        end
+    end
+    local function startDetectWin()
+        scheduler:scheduleScriptFunc(detectWin, 1 / 60, false)
+    end
+    self:runAction(cc.Sequence:create(cc.DelayTime:create(3), cc.CallFunc:create(startDetectWin)))
 end
 
 -- 物理設定

@@ -12,6 +12,7 @@ function Player:ctor(playerName, playerID, root, cam, heroType)
     self.playerID = playerID
     self.health = 100
     self.dead = false
+    self.win = false
     rootNode = root
     self.node = rootNode:getChildByName("Player"):clone()
     rootNode:addChild(self.node)
@@ -44,6 +45,21 @@ function Player:ctor(playerName, playerID, root, cam, heroType)
             self.dead = true
             print(self.playerName .. " 掛惹QQ")
             self.anim:play("die", false)
+            if self.cam ~= nil then
+                local gameoverLayer = cc.CSLoader:createNode("GameOverLayer.csb")
+                gameoverLayer:setPosition(cc.pSub(cc.p(self.cam:getPosition()), cc.p(640, 360)))
+                rootNode:addChild(gameoverLayer)
+            end
+        end
+        -- 判斷獲勝
+        if self.win then
+            local gameWinLayer = cc.CSLoader:createNode("GameWinLayer.csb")
+            local gameWinAnim = cc.CSLoader:createTimeline("GameWinLayer.csb")
+            gameWinLayer:setPosition(cc.pSub(cc.p(self.cam:getPosition()), cc.p(640, 360)))
+            rootNode:addChild(gameWinLayer)
+            gameWinLayer:runAction(gameWinAnim)
+            gameWinAnim:play("firework", true)
+            self.dead = true
         end
     end
     scheduler:scheduleScriptFunc(update, 1 / 60, false)

@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-const battlePlayerCount = 2
+const battlePlayerCount = 3
 
 var userNum int = 0 // client流水號
 var message = make(chan string)

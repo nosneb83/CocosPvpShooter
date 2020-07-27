@@ -107,6 +107,38 @@
             <Image Name="SteamMan.png" />
           </Folder>
         </Folder>
+        <Folder Name="firework">
+          <Image Name="tile000.png" />
+          <Image Name="tile001.png" />
+          <Image Name="tile002.png" />
+          <Image Name="tile003.png" />
+          <Image Name="tile004.png" />
+          <Image Name="tile005.png" />
+          <Image Name="tile006.png" />
+          <Image Name="tile007.png" />
+          <Image Name="tile008.png" />
+          <Image Name="tile009.png" />
+          <Image Name="tile010.png" />
+          <Image Name="tile011.png" />
+          <Image Name="tile012.png" />
+          <Image Name="tile013.png" />
+          <Image Name="tile014.png" />
+          <Image Name="tile015.png" />
+          <Image Name="tile016.png" />
+          <Image Name="tile017.png" />
+          <Image Name="tile018.png" />
+          <Image Name="tile019.png" />
+          <Image Name="tile020.png" />
+          <Image Name="tile021.png" />
+          <Image Name="tile022.png" />
+          <Image Name="tile023.png" />
+          <Image Name="tile024.png" />
+          <Image Name="tile025.png" />
+          <Image Name="tile026.png" />
+          <Image Name="tile027.png" />
+          <Image Name="tile028.png" />
+          <Image Name="tile029.png" />
+        </Folder>
         <Image Name="2.png" />
         <Image Name="20200313121701658.png" />
         <Image Name="20200313140350517.png" />
@@ -115,7 +147,10 @@
         <Project Name="BattleScene.csd" Type="Scene" />
         <Image Name="bossSamllBar.png" />
         <Image Name="bossSmallBarBg.png" />
+        <Image Name="Daco_4568521.png" />
         <Image Name="dialog_bg_2.png" />
+        <Project Name="GameOverLayer.csd" Type="Layer" />
+        <Project Name="GameWinLayer.csd" Type="Layer" />
         <Image Name="guidBg.jpg" />
         <Image Name="HelloWorld.png" />
         <Image Name="item_selected.png" />

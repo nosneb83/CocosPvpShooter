@@ -42,8 +42,8 @@ function Player:ctor(playerName, playerID, root, cam, heroType)
         -- 判斷死亡
         if self.healthBar:getPercent() == 0 then
             self.dead = true
-            print(self.playerName .. " 掛惹 QQ")
-            self:playAnim("die")
+            print(self.playerName .. " 掛惹QQ")
+            self.anim:play("die", false)
         end
     end
     scheduler:scheduleScriptFunc(update, 1 / 60, false)
@@ -54,7 +54,7 @@ function Player:ctor(playerName, playerID, root, cam, heroType)
     self.sprite:setPosition(cc.p(20, 30))
     self.anim = cc.CSLoader:createTimeline(animPath)
     self.sprite:runAction(self.anim)
-    self.anim:gotoFrameAndPlay(0, 40, true)
+    self.anim:play("idle", true)
     self.node:addChild(self.sprite)
 end
 
@@ -73,12 +73,12 @@ function Player:walk(dir)
     -- 改變動畫
     if self.walkDirection > 0 then
         self.sprite:setScaleX(1)
-        self:playAnim("walk")
+        self.anim:play("walk", true)
     elseif self.walkDirection < 0 then
         self.sprite:setScaleX(-1)
-        self:playAnim("walk")
+        self.anim:play("walk", true)
     else
-        self:playAnim("idle")
+        self.anim:play("idle", true)
     end
 end
 function Player:jump()
@@ -92,18 +92,18 @@ function Player:shoot(touch)
     local from = cc.p(self.node:getPosition())
     -- local to = cc.pScreenToWorld(touch)
     bullet:shoot(from, touch)
-    -- self:playAnim("attack")
+    -- self.anim:play("attack", false)
 end
 
--- 動畫播放frame數
+-- 動畫播放
 function Player:playAnim(animName)
     if animName == "idle" then
-        self.anim:gotoFrameAndPlay(0, 40, true)
+        self.anim:play("idle", true)
     elseif animName == "walk" then
-        self.anim:gotoFrameAndPlay(45, 75, true)
+        self.anim:play("walk", true)
     elseif animName == "attack" then -- 有bug
         local attAnim = self.anim:clone()
-        attAnim:gotoFrameAndPlay(80, 90, false)
+        self.anim:play("attack", false)
         local function func()
             if self.walkDirection > 0 then
                 self.sprite:setScaleX(1)
@@ -118,8 +118,7 @@ function Player:playAnim(animName)
         local call = cc.CallFunc(func)
         self.sprite:runAction(cc.Sequence:create(attAnim, call))
     elseif animName == "die" then
-        print("play anim: die")
-        self.anim:gotoFrameAndPlay(95, 145, false)
+        self.anim:play("die", false)
     end
 end
 

@@ -92,6 +92,22 @@ func registerNewGuest(conn net.Conn) (string, clientData) {
 	userNum++
 	fmt.Printf("%s [%s] 登入\n", client.name, addr)
 
+	// 目前大廳有誰
+	for _, client := range onlinemap {
+		if !client.ready {
+			continue
+		}
+		readyPlayer, err := json.Marshal(map[string]interface{}{
+			"op":         "CREATE_PLAYER",
+			"playerName": client.name,
+			"heroType":   client.heroType})
+		if err != nil {
+			fmt.Println("Marshal err: ", err)
+		}
+		conn.Write([]byte(readyPlayer))
+	}
+
+	// 新client加入server線上列表
 	onlinemap[addr] = client
 
 	return addr, client
@@ -115,7 +131,7 @@ func lobbyAddPlayer(addr string, client clientData, jsonObj map[string]interface
 	if err != nil {
 		fmt.Println("Marshal err: ", err)
 	}
-	privatemsg(string(playerIDAssign), client.name)
+	client.conn.Write([]byte(playerIDAssign))
 
 	// 當所有玩家都ready 即開始戰鬥
 	if checkReady() {

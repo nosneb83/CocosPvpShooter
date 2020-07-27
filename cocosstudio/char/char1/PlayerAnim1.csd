@@ -2,7 +2,7 @@
   <PropertyGroup Name="PlayerAnim1" Type="Node" ID="2ed7e2d9-60c8-4baa-96df-69a060e87508" Version="3.10.0.0" />
   <Content ctype="GameProjectContent">
     <Content>
-      <Animation Duration="145" Speed="1.0000" ActivedAnimationName="attack">
+      <Animation Duration="145" Speed="1.0000" ActivedAnimationName="walk">
         <Timeline ActionTag="1939514556" Property="FileData">
           <TextureFrame FrameIndex="0" Tween="False">
             <TextureFile Type="Normal" Path="char/char1/idle_frames/tile000.png" Plist="" />

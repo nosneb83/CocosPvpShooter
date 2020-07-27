@@ -35,7 +35,7 @@ function Bullet:ctor(root, type, playerID) -- Node, 子彈類型
     self.body:setContactTestBitmask(GroundBitmask + CharBitmask)
     self.node:setPhysicsBody(self.body)
 
-    print("bullet id = " .. tostring(self.playerID))
+    -- print("bullet id = " .. tostring(self.playerID))
 
     -- 監聽碰撞事件
     local function onContactBegin(contact)

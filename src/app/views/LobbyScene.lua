@@ -79,7 +79,7 @@ function LobbyScene:addSpriteAnim(node, heroType, offset, scale)
     sprite:setScale(scale, scale)
     local anim = cc.CSLoader:createTimeline(animPath)
     sprite:runAction(anim)
-    anim:gotoFrameAndPlay(0, 40, true)
+    anim:play("idle", true)
     node:addChild(sprite)
 end
 

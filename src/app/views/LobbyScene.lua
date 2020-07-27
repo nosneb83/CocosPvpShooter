@@ -67,7 +67,7 @@ function LobbyScene:ctor()
         end
     end
     socket:setReceiveCallback(ReceiveCallback)
-    socket:connect("127.0.0.1", "8888")
+    socket:connect("172.29.18.171", "8888")
 end
 
 -- 添加sprite動畫

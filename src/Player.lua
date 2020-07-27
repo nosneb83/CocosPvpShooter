@@ -81,7 +81,7 @@ end
 
 -- 角色動作
 function Player:walk(dir)
-    if self.dead then
+    if self.dead or self.win then
         self.walkDirection = 0
         return
     end
@@ -98,11 +98,11 @@ function Player:walk(dir)
     end
 end
 function Player:jump()
-    if self.dead then return end
+    if self.dead or self.win then return end
     self.body:applyImpulse(cc.pMul(cc.p(0, 1), 36000000))
 end
 function Player:shoot(touch)
-    if self.dead then return end
+    if self.dead or self.win then return end
     local bullet = Bullet:create(rootNode, self.heroType, self.playerID)
     -- self.node:addChild(bullet.node)
     local from = cc.p(self.node:getPosition())
